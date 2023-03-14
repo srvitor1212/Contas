@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Contas.Domain\Contas.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Context\" />
-  </ItemGroup>
-
 </Project>
