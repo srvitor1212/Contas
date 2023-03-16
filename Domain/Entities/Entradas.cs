@@ -8,12 +8,12 @@ namespace Domain.Entities
         public double Valor { get; private set; }
         public DateTime DataVigencia { get; private set; }
 
-        public Entradas(string nome, double valor, DateTime data_vigencia)
+        public Entradas(string nome, double valor, DateTime DataVigencia)
         {
-            Validation(nome, valor, data_vigencia);
+            Validation(nome, valor, DataVigencia);
         }
 
-        private void Validation(string nome, double valor, DateTime data_vigencia)
+        private void Validation(string nome, double valor, DateTime DataVigencia)
         {
             //nome
             DomainValidation.When(
@@ -40,7 +40,7 @@ namespace Domain.Entities
             //dados ok
             this.Nome = nome;
             this.Valor = valor;
-            this.DataVigencia = data_vigencia;
+            this.DataVigencia = DataVigencia;
 
         }
     }

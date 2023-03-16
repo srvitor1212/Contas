@@ -17,37 +17,27 @@ namespace Domain.Entities
         public int RecebedoresId { get; set; }
         public Recebedores Recebedores { get; set; }
 
-        public Dividas(string nome, decimal valor, bool foipago,
-            DateTime datainicio, DateTime datafim, byte diavencimento)
+        public Dividas(string nome, decimal valor, bool FoiPago,
+            DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
         {
-            Validation(nome, valor, foipago,
-                datainicio, datafim, diavencimento);
+            Validation(nome, valor, FoiPago,
+                DataInicio, DataFim, DiaVencimento);
         }
 
-        public Dividas(int id, string nome, decimal valor, bool foipago,
-            DateTime datainicio, DateTime datafim, byte diavencimento)
+        public Dividas(int id, string nome, decimal valor, bool FoiPago,
+            DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
         {
             DomainValidation.When(
                 id < 0,
                 "Id inválido!");
             this.Id = id;
 
-            Validation(nome, valor, foipago,
-                datainicio, datafim, diavencimento);
+            Validation(nome, valor, FoiPago,
+                DataInicio, DataFim, DiaVencimento);
         }
 
-        public void Update(string nome, decimal valor, bool foipago,
-            DateTime datainicio, DateTime datafim, byte diavencimento,
-            int PagamentosId, int RecebedoresId)
-        {
-            Validation(nome, valor, foipago,
-                datainicio, datafim, diavencimento);
-            this.PagamentosId = PagamentosId;
-            this.RecebedoresId = RecebedoresId;
-        }
-
-        public void Validation(string nome, decimal valor, bool foipago,
-            DateTime datainicio, DateTime datafim, byte diavencimento)
+        public void Validation(string nome, decimal valor, bool FoiPago,
+            DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
         {
             //nome
             DomainValidation.When(
@@ -73,10 +63,10 @@ namespace Domain.Entities
 
             this.Nome = nome;
             this.Valor = valor;
-            this.FoiPago = foipago;
-            this.DataInicio = datainicio;
-            this.DataFim = datafim;
-            this.DiaVencimento = diavencimento;
+            this.FoiPago = FoiPago;
+            this.DataInicio = DataInicio;
+            this.DataFim = DataFim;
+            this.DiaVencimento = DiaVencimento;
         }
 
     }
