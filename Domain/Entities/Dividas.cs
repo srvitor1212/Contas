@@ -1,5 +1,4 @@
 ﻿using Domain.Validation;
-using System.Data;
 
 namespace Domain.Entities
 {
