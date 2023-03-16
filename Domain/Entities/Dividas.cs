@@ -1,4 +1,5 @@
 ﻿using Domain.Validation;
+using System.Data;
 
 namespace Domain.Entities
 {
@@ -34,6 +35,16 @@ namespace Domain.Entities
 
             Validation(nome, valor, foipago,
                 datainicio, datafim, diavencimento);
+        }
+
+        public void Update(string nome, decimal valor, bool foipago,
+            DateTime datainicio, DateTime datafim, byte diavencimento,
+            int PagamentosId, int RecebedoresId)
+        {
+            Validation(nome, valor, foipago,
+                datainicio, datafim, diavencimento);
+            this.PagamentosId = PagamentosId;
+            this.RecebedoresId = RecebedoresId;
         }
 
         public void Validation(string nome, decimal valor, bool foipago,
