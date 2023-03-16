@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraData", "InfraData\InfraData.csproj", "{0BC23C29-34BD-4AD9-ACB5-2657624CEB96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraIOC", "InfraIOC\InfraIOC.csproj", "{7A04E411-5E1A-4A19-8B94-B71FCB586D15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0BC23C29-34BD-4AD9-ACB5-2657624CEB96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BC23C29-34BD-4AD9-ACB5-2657624CEB96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BC23C29-34BD-4AD9-ACB5-2657624CEB96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A04E411-5E1A-4A19-8B94-B71FCB586D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A04E411-5E1A-4A19-8B94-B71FCB586D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A04E411-5E1A-4A19-8B94-B71FCB586D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A04E411-5E1A-4A19-8B94-B71FCB586D15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
