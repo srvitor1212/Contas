@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Data.EntitiesConfiguration
+namespace InfraData.EntitiesConfiguration
 {
     public class EntradasConfiguration : IEntityTypeConfiguration<Entradas>
     {

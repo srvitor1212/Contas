@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 
-namespace Infra.Data.Repositories
+namespace InfraData.Repositories
 {
     public class PagamentosRepository : IPagamentosRepository
     {

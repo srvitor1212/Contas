@@ -1,11 +1,11 @@
 ﻿using Domain.Interfaces;
-using Infra.Data.Context;
-using Infra.Data.Repositories;
+using InfraData.Context;
+using InfraData.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infra.IoC
+namespace InfraIOC
 {
     public static class DependencyInjection
     {
