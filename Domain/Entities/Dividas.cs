@@ -30,6 +30,7 @@ namespace Domain.Entities
             DomainValidation.When(
                 id < 0,
                 "Id inválido!");
+            this.Id = id;
 
             Validation(nome, valor, foipago,
                 datainicio, datafim, diavencimento);
