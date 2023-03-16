@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infra.Data.EntitiesConfiguration
+namespace InfraData.EntitiesConfiguration
 {
     public class RecebedoresConfiguration : IEntityTypeConfiguration<Recebedores>
     {

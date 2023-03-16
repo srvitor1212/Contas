@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
 
-namespace Infra.Data.EntitiesConfiguration
+namespace InfraData.EntitiesConfiguration
 {
     public class PagamentosConfiguration : IEntityTypeConfiguration<Pagamentos>
     {
