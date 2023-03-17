@@ -1,5 +1,6 @@
 ﻿using Application.DTOs;
 using AutoMapper;
+using Domain.Entities;
 using Domain.Interfaces;
 
 namespace Application.Services
@@ -15,16 +16,6 @@ namespace Application.Services
             this._mapper = mapper;
         }
 
-        public async Task<RecebedoresDTO> Add(RecebedoresDTO recebedoresDTO)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<RecebedoresDTO> Delete(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<RecebedoresDTO>> GetAllAsync()
         {
             throw new NotImplementedException();
@@ -35,9 +26,21 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task<RecebedoresDTO> Update(RecebedoresDTO recebedoresDTO)
+        public async Task Add(RecebedoresDTO recebedoresDTO)
+        {
+            var recebedorEntity = _mapper.Map<Recebedores>(recebedoresDTO);
+            await _recebedoresRepository.CreateAsync(recebedorEntity);
+        }
+
+        public async Task Update(RecebedoresDTO recebedoresDTO)
         {
             throw new NotImplementedException();
         }
+
+        public async Task Delete(int? id)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
