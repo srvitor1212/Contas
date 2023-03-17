@@ -13,32 +13,35 @@ namespace InfraData.Repositories
             this._context = context;
         }
 
-        public Task<Recebedores> CreateAsync(Recebedores recebedores)
+        public async Task<Recebedores> CreateAsync(Recebedores recebedores)
+        {
+            _context.Add(recebedores);
+            await _context.SaveChangesAsync();
+
+            return recebedores;
+        }
+
+        public async Task<Recebedores> DeleteAsync(Recebedores recebedores)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Recebedores> DeleteAsync(Recebedores recebedores)
+        public async Task<IEnumerable<Recebedores>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Recebedores>> GetAllAsync()
+        public async Task<Recebedores> GetByIdAsync(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Recebedores> GetByIdAsync(int? id)
+        public async Task<Recebedores> RemoveAsync(Recebedores recebedores)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Recebedores> RemoveAsync(Recebedores recebedores)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Recebedores> UpdateAsync(Recebedores recebedores)
+        public async Task<Recebedores> UpdateAsync(Recebedores recebedores)
         {
             throw new NotImplementedException();
         }

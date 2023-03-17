@@ -13,32 +13,35 @@ namespace InfraData.Repositories
             this._context = context;
         }
 
-        public Task<Dividas> CreateAsync(Dividas dividas)
+        public async Task<Dividas> CreateAsync(Dividas dividas)
+        {
+            _context.Add(dividas);
+            await _context.SaveChangesAsync();
+
+            return dividas;
+        }
+
+        public async Task<Dividas> DeleteAsync(Dividas dividas)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Dividas> DeleteAsync(Dividas dividas)
+        public async Task<IEnumerable<Dividas>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Dividas>> GetAllAsync()
+        public async Task<Dividas> GetByIdAsync(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Dividas> GetByIdAsync(int? id)
+        public async Task<Dividas> RemoveAsync(Dividas dividas)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Dividas> RemoveAsync(Dividas dividas)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Dividas> UpdateAsync(Dividas dividas)
+        public async Task<Dividas> UpdateAsync(Dividas dividas)
         {
             throw new NotImplementedException();
         }
