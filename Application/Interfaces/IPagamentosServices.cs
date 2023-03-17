@@ -6,8 +6,8 @@ namespace Application.Services
     {
         Task<IEnumerable<PagamentosDTO>> GetAllAsync();
         Task<PagamentosDTO> GetById(string id);
-        Task<PagamentosDTO> Add(PagamentosDTO recebedoresDTO);
-        Task<PagamentosDTO> Update(PagamentosDTO recebedoresDTO);
-        Task<PagamentosDTO> Delete(int? id);
+        Task Add(PagamentosDTO recebedoresDTO);
+        Task Update(PagamentosDTO recebedoresDTO);
+        Task Delete(int? id);
     }
 }
