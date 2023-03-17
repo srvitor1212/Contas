@@ -1,5 +1,6 @@
 ﻿using Application.DTOs;
 using AutoMapper;
+using Domain.Entities;
 using Domain.Interfaces;
 
 namespace Application.Services
@@ -25,12 +26,13 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task Add(DividasDTO recebedoresDTO)
+        public async Task Add(DividasDTO dividasDTO)
         {
-            throw new NotImplementedException();
+            var dividasEntity = _mapper.Map<Dividas>(dividasDTO);
+            await _dividasRepository.CreateAsync(dividasEntity);
         }
 
-        public async Task Update(DividasDTO recebedoresDTO)
+        public async Task Update(DividasDTO dividasDTO)
         {
             throw new NotImplementedException();
         }

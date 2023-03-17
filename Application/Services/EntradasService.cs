@@ -1,5 +1,6 @@
 ﻿using Application.DTOs;
 using AutoMapper;
+using Domain.Entities;
 using Domain.Interfaces;
 
 namespace Application.Services
@@ -25,12 +26,13 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task Add(EntradasDTO recebedoresDTO)
+        public async Task Add(EntradasDTO entradasDTO)
         {
-            throw new NotImplementedException();
+            var entradasEntity = _mapper.Map<Entradas>(entradasDTO);
+            await _entradasRepository.CreateAsync(entradasEntity);
         }
 
-        public async Task Update(EntradasDTO recebedoresDTO)
+        public async Task Update(EntradasDTO entradasDTO)
         {
             throw new NotImplementedException();
         }

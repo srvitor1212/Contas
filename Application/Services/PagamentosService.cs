@@ -1,5 +1,6 @@
 ﻿using Application.DTOs;
 using AutoMapper;
+using Domain.Entities;
 using Domain.Interfaces;
 
 namespace Application.Services
@@ -25,12 +26,13 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task Add(PagamentosDTO recebedoresDTO)
+        public async Task Add(PagamentosDTO pagamentosDTO)
         {
-            throw new NotImplementedException();
+            var pagamentosEntity = _mapper.Map<Pagamentos>(pagamentosDTO);
+            await _pagamentosRepository.CreateAsync(pagamentosEntity);
         }
 
-        public async Task Update(PagamentosDTO recebedoresDTO)
+        public async Task Update(PagamentosDTO pagamentosDTO)
         {
             throw new NotImplementedException();
         }
