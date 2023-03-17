@@ -1,10 +1,18 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using InfraData.Context;
 
 namespace InfraData.Repositories
 {
     public class EntradasRepository : IEntradasRepository
     {
+        AppDbContext _context;
+
+        public EntradasRepository(AppDbContext context)
+        {
+            this._context = context;
+        }
+
         public Task<Entradas> CreateAsync(Entradas entradas)
         {
             throw new NotImplementedException();

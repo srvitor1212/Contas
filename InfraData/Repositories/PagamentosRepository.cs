@@ -1,10 +1,18 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using InfraData.Context;
 
 namespace InfraData.Repositories
 {
     public class PagamentosRepository : IPagamentosRepository
     {
+        AppDbContext _context;
+
+        public PagamentosRepository(AppDbContext context)
+        {
+            this._context = context;
+        }
+
         public Task<Pagamentos> CreateAsync(Pagamentos pagamentos)
         {
             throw new NotImplementedException();

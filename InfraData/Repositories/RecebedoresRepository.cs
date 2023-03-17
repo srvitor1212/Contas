@@ -1,10 +1,18 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using InfraData.Context;
 
 namespace InfraData.Repositories
 {
     public class RecebedoresRepository : IRecebedoresRepository
     {
+        AppDbContext _context;
+
+        public RecebedoresRepository(AppDbContext context)
+        {
+            this._context = context;
+        }
+
         public Task<Recebedores> CreateAsync(Recebedores recebedores)
         {
             throw new NotImplementedException();
