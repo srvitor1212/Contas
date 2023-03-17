@@ -6,8 +6,8 @@ namespace Application.Services
     {
         Task<IEnumerable<EntradasDTO>> GetAllAsync();
         Task<EntradasDTO> GetById(string id);
-        Task<EntradasDTO> Add(EntradasDTO recebedoresDTO);
-        Task<EntradasDTO> Update(EntradasDTO recebedoresDTO);
-        Task<EntradasDTO> Delete(int? id);
+        Task Add(EntradasDTO recebedoresDTO);
+        Task Update(EntradasDTO recebedoresDTO);
+        Task Delete(int? id);
     }
 }
