@@ -15,27 +15,27 @@ namespace Application.Services
             this._mapper = mapper;
         }
 
-        public Task<PagamentosDTO> Add(PagamentosDTO recebedoresDTO)
+        public async Task<PagamentosDTO> Add(PagamentosDTO recebedoresDTO)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PagamentosDTO> Delete(int? id)
+        public async Task<PagamentosDTO> Delete(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<PagamentosDTO>> GetAllAsync()
+        public async Task<IEnumerable<PagamentosDTO>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<PagamentosDTO> GetById(string id)
+        public async Task<PagamentosDTO> GetById(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PagamentosDTO> Update(PagamentosDTO recebedoresDTO)
+        public async Task<PagamentosDTO> Update(PagamentosDTO recebedoresDTO)
         {
             throw new NotImplementedException();
         }

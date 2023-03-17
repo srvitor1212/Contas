@@ -15,27 +15,27 @@ namespace Application.Services
             this._mapper = mapper;
         }
 
-        public Task<RecebedoresDTO> Add(RecebedoresDTO recebedoresDTO)
+        public async Task<RecebedoresDTO> Add(RecebedoresDTO recebedoresDTO)
         {
             throw new NotImplementedException();
         }
 
-        public Task<RecebedoresDTO> Delete(int? id)
+        public async Task<RecebedoresDTO> Delete(int? id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<RecebedoresDTO>> GetAllAsync()
+        public async Task<IEnumerable<RecebedoresDTO>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<RecebedoresDTO> GetById(string id)
+        public async Task<RecebedoresDTO> GetById(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<RecebedoresDTO> Update(RecebedoresDTO recebedoresDTO)
+        public async Task<RecebedoresDTO> Update(RecebedoresDTO recebedoresDTO)
         {
             throw new NotImplementedException();
         }
