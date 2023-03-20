@@ -1,4 +1,5 @@
-﻿using Application.Services;
+﻿using Application.Mapper;
+using Application.Services;
 using Domain.Interfaces;
 using InfraData.Context;
 using InfraData.Repositories;
@@ -28,6 +29,7 @@ namespace InfraIOC
             services.AddScoped<IEntradasService, EntradasService>();
             services.AddScoped<IPagamentosServices, PagamentosService>();
             services.AddScoped<IRecebedoresService, RecebedoresService>();
+            services.AddAutoMapper(typeof(DomainToDTO));
 
             return services;
         }
