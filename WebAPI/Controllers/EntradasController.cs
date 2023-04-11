@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("teste/[controller]")]
     public class EntradasController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> GetAll() 
-        {
-            return new string[] { "valor1", "valor2", "valor3" };
-        }
+        private readonly IEntradasService _entradasService;
     }
 }
