@@ -27,6 +27,7 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] EntradasDTO entradasDTO)
         {
+            //todo: Implementar regras e automações para "DataVigencia"
             if (entradasDTO == null)
                 return BadRequest("Dados inválidos");
 
