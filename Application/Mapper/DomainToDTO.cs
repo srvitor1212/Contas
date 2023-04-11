@@ -8,10 +8,10 @@ namespace Application.Mapper
     {
         public DomainToDTO() 
         { 
-            CreateMap<Dividas, DividasDTO>();
-            CreateMap<Entradas, EntradasDTO>();
-            CreateMap<Pagamentos, PagamentosDTO>();
-            CreateMap<Recebedores, RecebedoresDTO>();
+            CreateMap<Dividas, DividasDTO>().ReverseMap();
+            CreateMap<Entradas, EntradasDTO>().ReverseMap();
+            CreateMap<Pagamentos, PagamentosDTO>().ReverseMap();
+            CreateMap<Recebedores, RecebedoresDTO>().ReverseMap();
         }
     }
 }

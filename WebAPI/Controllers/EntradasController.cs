@@ -27,7 +27,6 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] EntradasDTO entradasDTO)
         {
-            //todo: Não está chegando aqui, ocorre erro "Nome obrigatório"
             if (entradasDTO == null)
                 return BadRequest("Dados inválidos");
 
