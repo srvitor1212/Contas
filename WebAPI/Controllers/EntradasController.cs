@@ -23,5 +23,16 @@ namespace WebAPI.Controllers
 
             return Ok(entradas);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Post([FromBody] EntradasDTO entradasDTO)
+        {
+            //todo: Não está chegando aqui, ocorre erro "Nome obrigatório"
+            if (entradasDTO == null)
+                return BadRequest("Dados inválidos");
+
+            await _entradasService.Add(entradasDTO);
+            return Ok();
+        }
     }
 }

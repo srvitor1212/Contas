@@ -4,11 +4,11 @@ namespace Application.DTOs
 {
     public class PagamentosDTO
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Tipo de pagamento obrigatório")]
         [MinLength(3)]
         [MaxLength(100)]
-        public string TipoDePagamento { get; protected set; }
+        public string TipoDePagamento { get; set; }
     }
 }

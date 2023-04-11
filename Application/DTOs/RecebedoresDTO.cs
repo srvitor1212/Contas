@@ -4,11 +4,11 @@ namespace Application.DTOs
 {
     public class RecebedoresDTO
     {
-        public int Id { get; protected set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Nome obrigatório")]
         [MinLength(3)]
         [MaxLength(100)]
-        public string Name { get; protected set; }
+        public string Name { get; set; }
     }
 }
