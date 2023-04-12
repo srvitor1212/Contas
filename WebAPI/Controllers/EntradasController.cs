@@ -29,7 +29,6 @@ namespace WebAPI.Controllers
         public async Task<ActionResult> Post([FromBody] EntradasViewModel entradasViewModel)
         {
             //todo: Implementar regras e automações para "DataVigencia"
-            //todo: Gerar data de criação
             EntradasDTO entradasDTO = new EntradasDTO();
             entradasDTO.Nome            = entradasViewModel.Nome;
             entradasDTO.Valor           = entradasViewModel.Valor;

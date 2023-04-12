@@ -31,13 +31,10 @@ namespace Application.Services
         public async Task Add(EntradasDTO entradasDTO)
         {
             var entradasEntity = _mapper.Map<Entradas>(entradasDTO);
-            /*
-             * Exemplo sem usar DTO
-            var entradasEntity = new Entradas(
-                entradasDTO.Nome,
-                entradasDTO.Valor,
-                entradasDTO.DataVigencia);
-            */
+
+            DateTime agora = DateTime.Now;
+            entradasEntity.DataCriacao = agora;
+            entradasEntity.DataAtualizacao = DateTime.Now;
 
             await _entradasRepository.CreateAsync(entradasEntity);
         }
