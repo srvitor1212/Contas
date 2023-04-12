@@ -20,9 +20,6 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<IEnumerable<EntradasDTO>>> Get()
         {
             var entradas = await _entradasService.GetAllAsync();
-            if (entradas == null) 
-                return NotFound("Não foram encontrados dados de Entradas!");
-
             return Ok(entradas);
         }
 
@@ -48,9 +45,6 @@ namespace WebAPI.Controllers
             entradasDTO.Valor           = entradasViewModel.Valor;
             entradasDTO.DataVigencia    = entradasViewModel.DataVigencia;
 
-            if (entradasDTO == null)
-                return BadRequest("Dados inválidos");
-
             await _entradasService.Add(entradasDTO);
             return new CreatedAtRouteResult("GetById", entradasDTO);
         }
@@ -66,9 +60,6 @@ namespace WebAPI.Controllers
             entradasDTO.DataVigencia = dataVigenciaTratada;
 
             if (id != entradasDTO.Id)
-                return BadRequest();
-
-            if (entradasDTO == null)
                 return BadRequest();
 
             await _entradasService.Update(entradasDTO);
