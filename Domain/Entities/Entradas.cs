@@ -4,9 +4,9 @@ namespace Domain.Entities
 {
     public sealed class Entradas : Base
     {
-        public string Nome { get; private set; }
-        public double Valor { get; private set; }
-        public DateTime DataVigencia { get; private set; }
+        public string Nome { get; set; }
+        public double Valor { get; set; }
+        public DateTime DataVigencia { get; set; }
 
         public Entradas(string nome, double valor, DateTime DataVigencia)
         {

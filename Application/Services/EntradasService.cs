@@ -42,11 +42,11 @@ namespace Application.Services
 
         public async Task Update(EntradasDTO entradasDTO)
         {
-            //todo: primeiro usar GetById depois mover os campos, para não perder a data de criação
-            var entradaEntity = _mapper.Map<Entradas>(entradasDTO);
-
-            DateTime agora = DateTime.Now;
-            entradaEntity.DataAtualizacao = agora;
+            var entradaEntity = await _entradasRepository.GetByIdAsync(entradasDTO.Id); //todo tratar se não encontrar
+            entradaEntity.Nome              = entradasDTO.Nome;
+            entradaEntity.Valor             = entradasDTO.Valor;
+            entradaEntity.DataVigencia      = entradasDTO.DataVigencia;
+            entradaEntity.DataAtualizacao   = DateTime.Now;
 
             await _entradasRepository.UpdateAsync(entradaEntity);
         }
