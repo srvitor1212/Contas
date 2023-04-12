@@ -32,11 +32,11 @@ namespace WebAPI.Controllers
                 entradasViewModel.DataVigencia.Year,
                 entradasViewModel.DataVigencia.Month,
                 entradasViewModel.DataVigencia.Day,
-                23, 59, 59
+                23, 59, 59, 999
                 );
             entradasViewModel.DataVigencia = dataVigenciaTratada;
 
-            EntradasDTO entradasDTO = new EntradasDTO();
+            EntradasDTO entradasDTO     = new EntradasDTO();
             entradasDTO.Nome            = entradasViewModel.Nome;
             entradasDTO.Valor           = entradasViewModel.Valor;
             entradasDTO.DataVigencia    = entradasViewModel.DataVigencia;
