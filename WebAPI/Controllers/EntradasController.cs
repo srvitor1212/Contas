@@ -28,7 +28,14 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] EntradasViewModel entradasViewModel)
         {
-            //todo: Implementar regras e automações para "DataVigencia"
+            DateTime dataVigenciaTratada = new DateTime(
+                entradasViewModel.DataVigencia.Year,
+                entradasViewModel.DataVigencia.Month,
+                entradasViewModel.DataVigencia.Day,
+                23, 59, 59
+                );
+            entradasViewModel.DataVigencia = dataVigenciaTratada;
+
             EntradasDTO entradasDTO = new EntradasDTO();
             entradasDTO.Nome            = entradasViewModel.Nome;
             entradasDTO.Valor           = entradasViewModel.Valor;
