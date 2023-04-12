@@ -1,6 +1,7 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.ViewModel;
 
 namespace WebAPI.Controllers
 {
@@ -25,11 +26,15 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] EntradasDTO entradasDTO)
+        public async Task<ActionResult> Post([FromBody] EntradasViewModel entradasViewModel)
         {
             //todo: Implementar regras e automações para "DataVigencia"
-            //todo: Fazer com que na sugestão do swagger não apareça o ID
             //todo: Gerar data de criação
+            EntradasDTO entradasDTO = new EntradasDTO();
+            entradasDTO.Nome            = entradasViewModel.Nome;
+            entradasDTO.Valor           = entradasViewModel.Valor;
+            entradasDTO.DataVigencia    = entradasViewModel.DataVigencia;
+
             if (entradasDTO == null)
                 return BadRequest("Dados inválidos");
 
