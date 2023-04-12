@@ -34,14 +34,19 @@ namespace Application.Services
 
             DateTime agora = DateTime.Now;
             entradasEntity.DataCriacao = agora;
-            entradasEntity.DataAtualizacao = DateTime.Now;
+            entradasEntity.DataAtualizacao = agora;
 
             await _entradasRepository.CreateAsync(entradasEntity);
         }
 
         public async Task Update(EntradasDTO entradasDTO)
         {
+            //todo: primeiro usar GetById depois mover os campos
             var entradaEntity = _mapper.Map<Entradas>(entradasDTO);
+
+            DateTime agora = DateTime.Now;
+            entradaEntity.DataAtualizacao = agora;
+
             await _entradasRepository.UpdateAsync(entradaEntity);
         }
 

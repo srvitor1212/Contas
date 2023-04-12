@@ -44,13 +44,20 @@ namespace WebAPI.Controllers
                 return BadRequest("Dados inválidos");
 
             await _entradasService.Add(entradasDTO);
-            return Ok();
+            return Ok(); //todo: retornar no método getbyid
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] EntradasDTO entradasDTO)
         {
             //todo: Atualizar somente data de modificação
+            DateTime dataVigenciaTratada = DataVigencia_Normalized(
+                entradasDTO.DataVigencia.Year,
+                entradasDTO.DataVigencia.Month,
+                entradasDTO.DataVigencia.Day
+                );
+            entradasDTO.DataVigencia = dataVigenciaTratada;
+
             if (id != entradasDTO.Id)
                 return BadRequest();
 
