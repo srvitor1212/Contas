@@ -42,13 +42,21 @@ namespace Application.Services
 
         public async Task Update(EntradasDTO entradasDTO)
         {
-            var entradaEntity = await _entradasRepository.GetByIdAsync(entradasDTO.Id); //todo tratar se não encontrar
-            entradaEntity.Nome              = entradasDTO.Nome;
-            entradaEntity.Valor             = entradasDTO.Valor;
-            entradaEntity.DataVigencia      = entradasDTO.DataVigencia;
-            entradaEntity.DataAtualizacao   = DateTime.Now;
+            var entradaEntity = await _entradasRepository.GetByIdAsync(entradasDTO.Id);
+            if (entradaEntity != null)
+            {
+                entradaEntity.Nome = entradasDTO.Nome;
+                entradaEntity.Valor = entradasDTO.Valor;
+                entradaEntity.DataVigencia = entradasDTO.DataVigencia;
+                entradaEntity.DataAtualizacao = DateTime.Now;
 
-            await _entradasRepository.UpdateAsync(entradaEntity);
+                try {
+                    await _entradasRepository.UpdateAsync(entradaEntity);
+                }
+                catch (Exception e) {
+                    throw new Exception("ERRO-SERVICE: " + e.Message);
+                };
+            }
         }
 
         public async Task Delete(int? id)

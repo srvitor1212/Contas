@@ -60,7 +60,11 @@ namespace WebAPI.Controllers
             entradasDTO.DataVigencia = dataVigenciaTratada;
 
             if (id != entradasDTO.Id)
-                return BadRequest();
+                return BadRequest("Id não confere");
+
+            var entradaEntity = await _entradasService.GetById(id);
+            if (entradaEntity == null)
+                return BadRequest("Registro não encontrada");
 
             await _entradasService.Update(entradasDTO);
             return Ok(entradasDTO);
