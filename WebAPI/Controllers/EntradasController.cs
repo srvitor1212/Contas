@@ -28,11 +28,10 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] EntradasViewModel entradasViewModel)
         {
-            DateTime dataVigenciaTratada = new DateTime(
+            DateTime dataVigenciaTratada = DataVigencia_Normalized(
                 entradasViewModel.DataVigencia.Year,
                 entradasViewModel.DataVigencia.Month,
-                entradasViewModel.DataVigencia.Day,
-                23, 59, 59, 999
+                entradasViewModel.DataVigencia.Day
                 );
             entradasViewModel.DataVigencia = dataVigenciaTratada;
 
@@ -60,6 +59,11 @@ namespace WebAPI.Controllers
 
             await _entradasService.Update(entradasDTO);
             return Ok(entradasDTO);
+        }
+
+        private DateTime DataVigencia_Normalized(int year, int month, int day)
+        {
+            return new DateTime(year, month, day, 23, 59, 59, 999);
         }
     }
 }
