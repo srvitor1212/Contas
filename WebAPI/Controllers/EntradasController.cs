@@ -52,7 +52,7 @@ namespace WebAPI.Controllers
                 return BadRequest("Dados inválidos");
 
             await _entradasService.Add(entradasDTO);
-            return Ok(); //todo: retornar no método getbyid
+            return new CreatedAtRouteResult("GetById", entradasDTO);
         }
 
         [HttpPut("{id}")]
