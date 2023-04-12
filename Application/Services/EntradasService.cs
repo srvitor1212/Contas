@@ -23,9 +23,10 @@ namespace Application.Services
             return _mapper.Map<IEnumerable<EntradasDTO>>(entradaEntity);
         }
 
-        public async Task<EntradasDTO> GetById(string id)
+        public async Task<EntradasDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var entradaEntity = await _entradasRepository.GetByIdAsync(id);
+            return _mapper.Map<EntradasDTO>(entradaEntity);
         }
 
         public async Task Add(EntradasDTO entradasDTO)
@@ -41,7 +42,7 @@ namespace Application.Services
 
         public async Task Update(EntradasDTO entradasDTO)
         {
-            //todo: primeiro usar GetById depois mover os campos
+            //todo: primeiro usar GetById depois mover os campos, para não perder a data de criação
             var entradaEntity = _mapper.Map<Entradas>(entradasDTO);
 
             DateTime agora = DateTime.Now;

@@ -34,7 +34,7 @@ namespace InfraData.Repositories
 
         public async Task<Entradas> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Entradas.FindAsync(id);
         }
 
         public async Task<Entradas> RemoveAsync(Entradas entradas)

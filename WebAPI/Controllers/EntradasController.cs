@@ -9,6 +9,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class EntradasController : ControllerBase
     {
+        //todo: implmentar respostas HTTP adequadas
         private readonly IEntradasService _entradasService;
         public EntradasController(IEntradasService entradasService)
         {
@@ -23,6 +24,13 @@ namespace WebAPI.Controllers
                 return NotFound("Não foram encontrados dados de Entradas!");
 
             return Ok(entradas);
+        }
+
+        [HttpGet("{id}", Name = "GetById")]
+        public async Task<ActionResult<EntradasDTO>> Get(int id)
+        {
+            var entrada = await _entradasService.GetById(id);
+            return Ok(entrada);
         }
 
         [HttpPost]
@@ -50,7 +58,6 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] EntradasDTO entradasDTO)
         {
-            //todo: Atualizar somente data de modificação
             DateTime dataVigenciaTratada = DataVigencia_Normalized(
                 entradasDTO.DataVigencia.Year,
                 entradasDTO.DataVigencia.Month,
