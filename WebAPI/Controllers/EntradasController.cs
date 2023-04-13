@@ -27,6 +27,9 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<EntradasDTO>> Get(int id)
         {
             var entrada = await _entradasService.GetById(id);
+            if(entrada == null)
+                return NotFound();
+
             return Ok(entrada);
         }
 
