@@ -29,13 +29,7 @@ namespace InfraData.Repositories
 
         public async Task<IEnumerable<Entradas>> GetAllAsync()
         {
-            try
-            {
-                return await _context.Entradas.ToListAsync();
-            } catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return await _context.Entradas.ToListAsync();
         }
 
         public async Task<Entradas> GetByIdAsync(int? id)
