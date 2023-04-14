@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
 
             var entradaEntity = await _entradasService.GetById(id);
             if (entradaEntity == null)
-                return BadRequest("Registro não encontrada");
+                return NotFound("Registro não encontrada");
 
             await _entradasService.Update(entradasDTO);
             return Ok(entradasDTO);
