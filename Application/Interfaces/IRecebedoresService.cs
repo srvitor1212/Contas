@@ -6,7 +6,7 @@ namespace Application.Interfaces
     {
         Task<IEnumerable<RecebedoresDTO>> GetAllAsync();
         Task<RecebedoresDTO> GetById(string id);
-        Task Add(RecebedoresDTO recebedoresDTO);
+        Task<RecebedoresDTO> Add(RecebedoresDTO recebedoresDTO);
         Task Update(RecebedoresDTO recebedoresDTO);
         Task Delete(int? id);
     }

@@ -27,10 +27,20 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task Add(RecebedoresDTO recebedoresDTO)
+        public async Task<RecebedoresDTO> Add(RecebedoresDTO recebedoresDTO)
         {
+            DateTime agora = DateTime.Now;
+
             var recebedorEntity = _mapper.Map<Recebedores>(recebedoresDTO);
-            await _recebedoresRepository.CreateAsync(recebedorEntity);
+            recebedorEntity.DataCriacao = agora;
+            recebedorEntity.DataAtualizacao = agora;
+
+            var recebedorEntityCreated =
+                await _recebedoresRepository.CreateAsync(recebedorEntity);
+            var retRecebedorDTO = 
+                _mapper.Map<RecebedoresDTO>(recebedorEntityCreated);
+
+            return retRecebedorDTO;
         }
 
         public async Task Update(RecebedoresDTO recebedoresDTO)
