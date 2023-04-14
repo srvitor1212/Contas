@@ -26,11 +26,11 @@ namespace WebAPI.Controllers
         [HttpGet("{id}", Name = "GetById")]
         public async Task<ActionResult<EntradasDTO>> Get(int id)
         {
-            var entrada = await _entradasService.GetById(id);
-            if(entrada == null)
+            var entradaDTO = await _entradasService.GetById(id);
+            if(entradaDTO == null)
                 return NotFound();
 
-            return Ok(entrada);
+            return Ok(entradaDTO);
         }
 
         [HttpPost]
