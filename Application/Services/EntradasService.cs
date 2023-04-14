@@ -55,12 +55,7 @@ namespace Application.Services
                 entradaEntity.DataVigencia = entradasDTO.DataVigencia;
                 entradaEntity.DataAtualizacao = DateTime.Now;
 
-                try {
-                    await _entradasRepository.UpdateAsync(entradaEntity);
-                }
-                catch (Exception e) {
-                    throw new Exception("ERRO-SERVICE: " + e.Message);
-                };
+                await _entradasRepository.UpdateAsync(entradaEntity);
             }
         }
 
