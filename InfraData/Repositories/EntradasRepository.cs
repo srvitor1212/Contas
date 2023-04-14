@@ -1,38 +1,54 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using InfraData.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace InfraData.Repositories
 {
     public class EntradasRepository : IEntradasRepository
     {
-        public Task<Entradas> CreateAsync(Entradas entradas)
+        AppDbContext _context;
+
+        public EntradasRepository(AppDbContext context)
+        {
+            this._context = context;
+        }
+
+        public async Task<Entradas> CreateAsync(Entradas entradas)
+        {
+            _context.Add(entradas);
+            await _context.SaveChangesAsync();
+
+            return entradas;
+        }
+
+        public async Task<Entradas> DeleteAsync(Entradas entradas)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Entradas> DeleteAsync(Entradas entradas)
+        public async Task<IEnumerable<Entradas>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Entradas.ToListAsync();
         }
 
-        public Task<IEnumerable<Entradas>> GetAllAsync()
+        public async Task<Entradas> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Entradas.FindAsync(id);
         }
 
-        public Task<Entradas> GetByIdAsync(int? id)
+        public async Task<Entradas> RemoveAsync(Entradas entradas)
         {
-            throw new NotImplementedException();
+            _context.Remove(entradas);
+            await _context.SaveChangesAsync();
+            return entradas;
         }
 
-        public Task<Entradas> RemoveAsync(Entradas entradas)
+        public async Task<Entradas> UpdateAsync(Entradas entradas)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Entradas> UpdateAsync(Entradas entradas)
-        {
-            throw new NotImplementedException();
+            _context.Update(entradas);
+            await _context.SaveChangesAsync();
+            return entradas;
         }
     }
 }
