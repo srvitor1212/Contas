@@ -9,7 +9,6 @@ namespace WebAPI.Controllers
     [ApiController]
     public class EntradasController : ControllerBase
     {
-        //todo: implmentar respostas HTTP adequadas
         private readonly IEntradasService _entradasService;
         public EntradasController(IEntradasService entradasService)
         {
