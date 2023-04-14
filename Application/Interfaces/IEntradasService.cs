@@ -6,7 +6,7 @@ namespace Application.Interfaces
     {
         Task<IEnumerable<EntradasDTO>> GetAllAsync();
         Task<EntradasDTO> GetById(int id);
-        Task Add(EntradasDTO recebedoresDTO);
+        Task<EntradasDTO> Add(EntradasDTO recebedoresDTO);
         Task Update(EntradasDTO recebedoresDTO);
         Task Delete(int? id);
     }

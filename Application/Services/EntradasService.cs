@@ -29,15 +29,20 @@ namespace Application.Services
             return _mapper.Map<EntradasDTO>(entradaEntity);
         }
 
-        public async Task Add(EntradasDTO entradasDTO)
+        public async Task<EntradasDTO> Add(EntradasDTO entradasDTO)
         {
-            var entradasEntity = _mapper.Map<Entradas>(entradasDTO);
-
             DateTime agora = DateTime.Now;
+
+            var entradasEntity = _mapper.Map<Entradas>(entradasDTO);
             entradasEntity.DataCriacao = agora;
             entradasEntity.DataAtualizacao = agora;
 
-            await _entradasRepository.CreateAsync(entradasEntity);
+            var entradaEntityCreated = 
+                await _entradasRepository.CreateAsync(entradasEntity);
+            var retEntradasDTO = 
+                _mapper.Map<EntradasDTO>(entradaEntityCreated);
+
+            return retEntradasDTO;
         }
 
         public async Task Update(EntradasDTO entradasDTO)

@@ -48,8 +48,8 @@ namespace WebAPI.Controllers
             entradasDTO.Valor           = entradasViewModel.Valor;
             entradasDTO.DataVigencia    = entradasViewModel.DataVigencia;
 
-            await _entradasService.Add(entradasDTO);
-            return new CreatedAtRouteResult("GetById", entradasDTO);
+            var createdDTO = await _entradasService.Add(entradasDTO);
+            return Created("", createdDTO);
         }
 
         [HttpPut("{id}")]
