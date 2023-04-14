@@ -9,7 +9,7 @@ namespace Domain.Entities
         public bool FoiPago { get; private set; }
         public DateTime DataInicio { get; private set; }
         public DateTime DataFim { get; private set; }
-        public byte DiaVencimento { get; set; }
+        public byte DiaVencimento { get; private set; }
 
         public int PagamentosId { get; set; }
         public Pagamentos Pagamentos { get; set; }
