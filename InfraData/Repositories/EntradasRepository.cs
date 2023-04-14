@@ -39,7 +39,9 @@ namespace InfraData.Repositories
 
         public async Task<Entradas> RemoveAsync(Entradas entradas)
         {
-            throw new NotImplementedException();
+            _context.Remove(entradas);
+            await _context.SaveChangesAsync();
+            return entradas;
         }
 
         public async Task<Entradas> UpdateAsync(Entradas entradas)

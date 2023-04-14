@@ -73,6 +73,20 @@ namespace WebAPI.Controllers
             return Ok(entradasDTO);
         }
 
+        [HttpDelete]
+        public async Task<ActionResult> Delete(int id)
+        {
+            if(id == 0) 
+                return NotFound();
+
+            var entradaDTO = await _entradasService.GetById(id);
+            if(entradaDTO == null)
+                return NotFound();
+
+            await _entradasService.Delete(id);
+            return Ok();
+        }
+
         private DateTime DataVigencia_Normalized(int year, int month, int day)
         {
             return new DateTime(year, month, day, 23, 59, 59, 999);
