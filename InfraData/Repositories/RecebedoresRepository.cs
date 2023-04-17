@@ -39,7 +39,9 @@ namespace InfraData.Repositories
 
         public async Task<Recebedores> RemoveAsync(Recebedores recebedores)
         {
-            throw new NotImplementedException();
+            _context.Remove(recebedores);
+            await _context.SaveChangesAsync();
+            return recebedores;
         }
 
         public async Task<Recebedores> UpdateAsync(Recebedores recebedores)

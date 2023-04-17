@@ -61,7 +61,8 @@ namespace Application.Services
 
         public async Task Delete(int? id)
         {
-            throw new NotImplementedException();
+            var recebedoreEntity = await _recebedoresRepository.GetByIdAsync(id);
+            await _recebedoresRepository.RemoveAsync(recebedoreEntity);
         }
 
     }

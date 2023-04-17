@@ -56,5 +56,19 @@ namespace WebAPI.Controllers
             await _recebedoresService.Update(recebedoresDTO);
             return Ok();
         }
+
+        [HttpDelete]
+        public async Task<ActionResult> Delete(int id)
+        {
+            if (id == 0)
+                return NotFound();
+
+            var recebedorDTO = await _recebedoresService.GetById(id);
+            if (recebedorDTO == null)
+                return NotFound();
+
+            await _recebedoresService.Delete(id);
+            return Ok();
+        }
     }
 }
