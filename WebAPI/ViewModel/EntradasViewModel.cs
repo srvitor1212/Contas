@@ -6,7 +6,7 @@ namespace WebAPI.ViewModel
     {
         [Required(ErrorMessage = "Nome obrigatório")]
         [MinLength(3)]
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string Nome { get; set; }
 
 
