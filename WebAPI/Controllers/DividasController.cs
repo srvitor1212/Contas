@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -12,5 +13,12 @@ namespace WebAPI.Controllers
         {
             this._dividasService = dividasService;
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Post([FromBody] DividasViewModel dividasViewModel)
+        {
+
+        }
+
     }
 }
