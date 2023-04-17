@@ -36,6 +36,13 @@ namespace Domain.Entities
                 DataInicio, DataFim, DiaVencimento);
         }
 
+        public void Update(string nome, decimal valor, bool FoiPago,
+            DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
+        {
+            Validation(nome, valor, FoiPago,
+                DataInicio, DataFim, DiaVencimento);
+        }
+
         public void Validation(string nome, decimal valor, bool FoiPago,
             DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
         {
