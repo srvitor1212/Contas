@@ -53,6 +53,7 @@ namespace Application.Services
                 recebedorEntitiy.Update(
                     recebedoresDTO.Nome
                     );
+                recebedorEntitiy.DataAtualizacao = DateTime.Now;
 
                 await _recebedoresRepository.UpdateAsync(recebedorEntitiy);
             }
