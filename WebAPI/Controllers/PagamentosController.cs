@@ -30,7 +30,11 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] PagamentosViewModel pagamentosViewModel)
         {
-            throw new NotImplementedException();
+            PagamentosDTO pagamentosDTO = new PagamentosDTO();            
+            pagamentosDTO.Nome = pagamentosViewModel.Nome;
+
+            var createdDTO = _pagamentosServices.Add(pagamentosDTO);
+            return Created("", createdDTO);
         }
 
         [HttpPut("{id}")]

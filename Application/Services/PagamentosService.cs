@@ -27,10 +27,17 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task Add(PagamentosDTO pagamentosDTO)
+        public async Task<PagamentosDTO> Add(PagamentosDTO pagamentosDTO)
         {
             var pagamentosEntity = _mapper.Map<Pagamentos>(pagamentosDTO);
-            await _pagamentosRepository.CreateAsync(pagamentosEntity);
+            pagamentosEntity.DataAtualizacao = DateTime.Now;
+
+            var pagamentosEntityCreated = 
+                await _pagamentosRepository.CreateAsync(pagamentosEntity);
+            var retPagamentosDTO = 
+                _mapper.Map<PagamentosDTO>(pagamentosEntityCreated);
+
+            return retPagamentosDTO;
         }
 
         public async Task Update(PagamentosDTO pagamentosDTO)

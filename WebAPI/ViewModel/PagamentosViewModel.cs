@@ -4,6 +4,6 @@ namespace WebAPI.ViewModel
 {
     public class PagamentosViewModel
     {
-        public string TipoDePagamento { get; private set; }
+        public string Nome { get; set; }
     }
 }

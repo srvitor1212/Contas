@@ -10,7 +10,7 @@ namespace InfraData.EntitiesConfiguration
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.TipoDePagamento).HasMaxLength(100).IsRequired();
+            builder.Property(x => x.Nome).HasMaxLength(100).IsRequired();
         }
     }
 }

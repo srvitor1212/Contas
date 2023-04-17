@@ -9,6 +9,6 @@ namespace Application.DTOs
         [Required(ErrorMessage = "Tipo de pagamento obrigatório")]
         [MinLength(3)]
         [MaxLength(100)]
-        public string TipoDePagamento { get; set; }
+        public string Nome { get; set; }
     }
 }
