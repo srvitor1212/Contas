@@ -13,6 +13,11 @@ namespace Domain.Entities
             Validation(nome);
         }
 
+        public void Update(string nome)
+        {
+            Validation(nome);
+        }
+
         private void Validation(string nome)
         {
             DomainValidation.When(

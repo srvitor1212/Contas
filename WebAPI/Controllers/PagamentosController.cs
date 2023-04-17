@@ -45,7 +45,15 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] PagamentosDTO pagamentosDTO)
         {
-            throw new NotImplementedException();
+            if (id != pagamentosDTO.Id)
+                return BadRequest("Id não confere");
+
+            var pagamentoEntity = await _pagamentosServices.GetById(id);
+            if (pagamentoEntity == null)
+                return NotFound("Registro não encontrado");
+
+            await _pagamentosServices.Update(pagamentosDTO);
+            return Ok(pagamentosDTO);
         }
 
         [HttpDelete]

@@ -44,7 +44,16 @@ namespace Application.Services
 
         public async Task Update(PagamentosDTO pagamentosDTO)
         {
-            throw new NotImplementedException();
+            var pagamentoEntity = await _pagamentosRepository.GetByIdAsync(pagamentosDTO.Id);
+            if (pagamentoEntity != null)
+            {
+                pagamentoEntity.Update(
+                    pagamentosDTO.Nome
+                    );
+                pagamentoEntity.DataAtualizacao = DateTime.Now;
+
+                await _pagamentosRepository.UpdateAsync(pagamentoEntity);
+            }
         }
 
         public async Task Delete(int? id)

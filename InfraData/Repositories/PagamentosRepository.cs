@@ -44,7 +44,9 @@ namespace InfraData.Repositories
 
         public async Task<Pagamentos> UpdateAsync(Pagamentos pagamentos)
         {
-            throw new NotImplementedException();
+            _context.Update(pagamentos);
+            await _context.SaveChangesAsync();
+            return pagamentos;
         }
     }
 }
