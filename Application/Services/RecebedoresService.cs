@@ -47,7 +47,15 @@ namespace Application.Services
 
         public async Task Update(RecebedoresDTO recebedoresDTO)
         {
-            throw new NotImplementedException();
+            var recebedorEntitiy = await _recebedoresRepository.GetByIdAsync(recebedoresDTO.Id);
+            if (recebedorEntitiy != null)
+            {
+                recebedorEntitiy.Update(
+                    recebedoresDTO.Nome
+                    );
+
+                await _recebedoresRepository.UpdateAsync(recebedorEntitiy);
+            }
         }
 
         public async Task Delete(int? id)

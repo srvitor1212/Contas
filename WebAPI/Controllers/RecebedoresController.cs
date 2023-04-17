@@ -42,5 +42,19 @@ namespace WebAPI.Controllers
             var createdDTO = await _recebedoresService.Add(recebedoresDTO);
             return Created("", createdDTO);
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put (int id, [FromBody] RecebedoresDTO recebedoresDTO)
+        {
+            if (id != recebedoresDTO.Id)
+                return BadRequest("Id não confere");
+
+            var recebedorEntity = await _recebedoresService.GetById(id);
+            if (recebedorEntity == null)
+                return BadRequest("Registro não encontrado");
+
+            await _recebedoresService.Update(recebedoresDTO);
+            return Ok();
+        }
     }
 }

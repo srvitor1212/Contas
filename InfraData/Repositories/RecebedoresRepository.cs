@@ -44,7 +44,9 @@ namespace InfraData.Repositories
 
         public async Task<Recebedores> UpdateAsync(Recebedores recebedores)
         {
-            throw new NotImplementedException();
+            _context.Update(recebedores);
+            await _context.SaveChangesAsync();
+            return recebedores;
         }
     }
 }
