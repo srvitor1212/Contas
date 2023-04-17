@@ -23,9 +23,10 @@ namespace Application.Services
             return _mapper.Map<IEnumerable<PagamentosDTO>>(pagamentosEntity);
         }
 
-        public async Task<PagamentosDTO> GetById(string id)
+        public async Task<PagamentosDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var pagamentoEntity = await _pagamentosRepository.GetByIdAsync(id);
+            return _mapper.Map<PagamentosDTO>(pagamentoEntity);
         }
 
         public async Task<PagamentosDTO> Add(PagamentosDTO pagamentosDTO)

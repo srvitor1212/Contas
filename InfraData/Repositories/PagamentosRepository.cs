@@ -34,7 +34,7 @@ namespace InfraData.Repositories
 
         public async Task<Pagamentos> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Pagamentos.FindAsync(id);
         }
 
         public async Task<Pagamentos> RemoveAsync(Pagamentos pagamentos)

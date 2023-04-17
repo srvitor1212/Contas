@@ -25,7 +25,11 @@ namespace WebAPI.Controllers
         [HttpGet("{id}", Name = "GetPagamentos")]
         public async Task<ActionResult<PagamentosDTO>> Get(int id)
         {
-            throw new NotImplementedException();
+            var pagamentosDTO = await _pagamentosServices.GetById(id);
+            if (pagamentosDTO == null)
+                return NotFound();
+
+            return Ok(pagamentosDTO);
         }
 
         [HttpPost]
