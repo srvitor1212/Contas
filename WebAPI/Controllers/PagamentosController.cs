@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
             PagamentosDTO pagamentosDTO = new PagamentosDTO();            
             pagamentosDTO.Nome = pagamentosViewModel.Nome;
 
-            var createdDTO = _pagamentosServices.Add(pagamentosDTO);
+            var createdDTO = await _pagamentosServices.Add(pagamentosDTO);
             return Created("", createdDTO);
         }
 

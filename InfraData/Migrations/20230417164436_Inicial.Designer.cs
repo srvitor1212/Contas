@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfraData.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230316185943_Inicial")]
+    [Migration("20230417164436_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -120,7 +120,7 @@ namespace InfraData.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TipoDePagamento")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
