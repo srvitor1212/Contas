@@ -16,6 +16,13 @@ namespace WebAPI.Controllers
         }
         //todo: terminar o CRUD
 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<RecebedoresDTO>>> Get()
+        {
+            var recebedores = await _recebedoresService.GetAllAsync();
+            return Ok(recebedores);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] RecebedoresViewModel recebedoresViewModel)
         {
