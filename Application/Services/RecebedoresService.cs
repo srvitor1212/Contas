@@ -23,9 +23,10 @@ namespace Application.Services
             return _mapper.Map<IEnumerable<RecebedoresDTO>>(recebedoresEntity);
         }
 
-        public async Task<RecebedoresDTO> GetById(string id)
+        public async Task<RecebedoresDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var recebedoresEntity = await _recebedoresRepository.GetByIdAsync(id);
+            return _mapper.Map<RecebedoresDTO>(recebedoresEntity);
         }
 
         public async Task<RecebedoresDTO> Add(RecebedoresDTO recebedoresDTO)

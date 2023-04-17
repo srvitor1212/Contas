@@ -34,7 +34,7 @@ namespace InfraData.Repositories
 
         public async Task<Recebedores> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Recebedores.FindAsync(id);
         }
 
         public async Task<Recebedores> RemoveAsync(Recebedores recebedores)

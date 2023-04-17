@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
             return Ok(entradas);
         }
 
-        [HttpGet("{id}", Name = "GetById")]
+        [HttpGet("{id}", Name = "GetEntrada")]
         public async Task<ActionResult<EntradasDTO>> Get(int id)
         {
             var entradaDTO = await _entradasService.GetById(id);

@@ -23,6 +23,16 @@ namespace WebAPI.Controllers
             return Ok(recebedores);
         }
 
+        [HttpGet("{id}", Name = "GetRecebedor")]
+        public async Task<ActionResult<RecebedoresDTO>> Get(int id)
+        {
+            var recebedoresDTO = await _recebedoresService.GetById(id);
+            if (recebedoresDTO == null)
+                return NotFound();
+
+            return Ok(recebedoresDTO);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] RecebedoresViewModel recebedoresViewModel)
         {
