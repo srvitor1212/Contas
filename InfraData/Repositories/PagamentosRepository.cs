@@ -39,7 +39,9 @@ namespace InfraData.Repositories
 
         public async Task<Pagamentos> RemoveAsync(Pagamentos pagamentos)
         {
-            throw new NotImplementedException();
+            _context.Remove(pagamentos);
+            await _context.SaveChangesAsync();
+            return pagamentos;
         }
 
         public async Task<Pagamentos> UpdateAsync(Pagamentos pagamentos)

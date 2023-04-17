@@ -59,7 +59,15 @@ namespace WebAPI.Controllers
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
-            throw new NotImplementedException();
+            if (id == 0)
+                return NotFound();
+
+            var pagamentoEntity = await _pagamentosServices.GetById(id);
+            if (pagamentoEntity == null)
+                return NotFound();
+
+            await _pagamentosServices.Delete(id);
+            return Ok();
         }
     }
 }
