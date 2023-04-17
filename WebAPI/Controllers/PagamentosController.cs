@@ -18,7 +18,8 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PagamentosDTO>>> Get()
         {
-            throw new NotImplementedException();
+            var pagamentos = await _pagamentosServices.GetAllAsync();
+            return Ok(pagamentos);
         }
 
         [HttpGet("{id}", Name = "GetPagamentos")]

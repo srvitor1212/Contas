@@ -19,7 +19,8 @@ namespace Application.Services
 
         public async Task<IEnumerable<PagamentosDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var pagamentosEntity = await _pagamentosRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<PagamentosDTO>>(pagamentosEntity);
         }
 
         public async Task<PagamentosDTO> GetById(string id)

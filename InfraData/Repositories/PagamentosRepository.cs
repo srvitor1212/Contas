@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 using InfraData.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace InfraData.Repositories
 {
@@ -28,7 +29,7 @@ namespace InfraData.Repositories
 
         public async Task<IEnumerable<Pagamentos>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Pagamentos.ToListAsync();
         }
 
         public async Task<Pagamentos> GetByIdAsync(int? id)
