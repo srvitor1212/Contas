@@ -24,14 +24,15 @@ namespace WebAPI.Exceptions
 
         private static void ThrowUnknownError(ExceptionContext context)
         {
+            var jsonRetorno = new
+            {
+                status = "error",
+                source = context.Exception.Source,
+                exception = context.Exception.Message
+            };
+
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            //context.Result = new ObjectResult("ERRO INTERNO DO SERVIDOR! :(");
-            context.Result = new ObjectResult("" +
-                "{" +
-                "\"status\" : \"Error\", " +
-                "\"Message\" : \"Erro interno do servidor\"" +
-                "}");
-            //context.Result = new ObjectResult(new RespostaErroJson(string.Format(Resource.ThrowUnknownError_Error_Throw, nameof(ThrowUnknownError), context.Exception.Message)));
+            context.Result = new ObjectResult(jsonRetorno);
         }
     }
 }

@@ -5,17 +5,8 @@ namespace Application.DTOs
     public class EntradasDTO
     {
         public int Id { get; set; }
-
-        [Required(ErrorMessage = "Nome obrigatório")]
-        [MinLength(3)]
-        [MaxLength(200)]
         public string Nome { get; set; }
-
-
-        [Required(ErrorMessage = "Valor obrigatório")]
         public double Valor { get; set; }
-
-
         public DateTime DataVigencia { get; set; }
     }
 }
