@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Domain.Validation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 
@@ -9,6 +10,16 @@ namespace WebAPI.Exceptions
         public void OnException(ExceptionContext context)
         {
             ThrowUnknownError(context);
+
+            /*
+            if (context.Exception is DomainValidation)
+            {
+                //todo: trata exceções
+            } else
+            {
+                ThrowUnknownError(context);
+            }
+            */
         }
 
         private static void ThrowUnknownError(ExceptionContext context)
