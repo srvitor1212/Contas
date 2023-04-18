@@ -14,7 +14,6 @@ namespace WebAPI.Controllers
         {
             this._recebedoresService = recebedoresService;
         }
-        //todo: terminar o CRUD
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RecebedoresDTO>>> Get()

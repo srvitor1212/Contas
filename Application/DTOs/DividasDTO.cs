@@ -4,7 +4,6 @@ namespace Application.DTOs
 {
     public class DividasDTO
     {
-        //todo: montar DTO
         public int Id { get; set; }
 
 
