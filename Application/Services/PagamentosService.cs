@@ -31,8 +31,11 @@ namespace Application.Services
 
         public async Task<PagamentosDTO> Add(PagamentosDTO pagamentosDTO)
         {
+            DateTime agora = DateTime.Now;
+
             var pagamentosEntity = _mapper.Map<Pagamentos>(pagamentosDTO);
-            pagamentosEntity.DataAtualizacao = DateTime.Now;
+            pagamentosEntity.DataCriacao = agora;
+            pagamentosEntity.DataAtualizacao = agora;
 
             var pagamentosEntityCreated = 
                 await _pagamentosRepository.CreateAsync(pagamentosEntity);
