@@ -1,5 +1,4 @@
-﻿using Application.DTOs;
-using Application.Interfaces;
+﻿using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.ViewModel;
 
@@ -10,9 +9,16 @@ namespace WebAPI.Controllers
     public class DividasController : ControllerBase
     {
         private readonly IDividasService _dividasService;
-        public DividasController(IDividasService dividasService)
+        private readonly IPagamentosServices _pagamentosService;
+        private readonly IRecebedoresService _recebedoresService;
+        public DividasController(
+            IDividasService dividasService, 
+            IPagamentosServices pagamentosService,
+            IRecebedoresService recebedoresService)
         {
             this._dividasService = dividasService;
+            this._pagamentosService = pagamentosService;
+            this._recebedoresService = recebedoresService;
         }
 
         [HttpPost]
@@ -23,8 +29,16 @@ namespace WebAPI.Controllers
             if (dividasViewModel.DataInicio > dividasViewModel.DataFim)
                 return BadRequest("Data inicio maior que data fim");
 
-            //todo: validar se pagamento e recebedor existem
-            throw new NotImplementedException();
+            var pagamento = await _pagamentosService.GetById(dividasViewModel.PagamentosId);
+            if (pagamento == null)
+                return BadRequest("Pagamento não existe"); //todo: Colocar como padrão dinheiro
+
+            var recebedor = await _recebedoresService.GetById(dividasViewModel.RecebedoresId);
+            if (recebedor == null)
+                return BadRequest("Recebedor não existe"); //todo: Colocar um valor padrão em caso de zero
+
+            //todo: gravar a divida
+            return Ok(dividasViewModel);
         }
 
         private void ModelNormalized(DividasViewModel model)
