@@ -6,7 +6,7 @@ namespace Domain.Entities
     {
         public string Nome { get; private set; }
         public decimal Valor { get; private set; }
-        public bool FoiPago { get; private set; }
+        public bool FoiPago { get; private set; } = false;
         public DateTime DataInicio { get; private set; }
         public DateTime DataFim { get; private set; }
         public byte DiaVencimento { get; private set; }

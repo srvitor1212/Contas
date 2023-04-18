@@ -17,16 +17,17 @@ namespace Application.DTOs
         public decimal Valor { get; set; }
 
 
-        public bool FoiPago { get; private set; }
+        public bool FoiPago { get; set; } = false;
 
 
-        public DateTime DataInicio { get; private set; }
+        public DateTime DataInicio { get; set; }
 
 
-        public DateTime DataFim { get; private set; }
+        public DateTime DataFim { get; set; }
 
 
-        public byte DiaVencimento { get; private set; }
+        [Required]
+        public byte DiaVencimento { get; set; }
 
 
         public int PagamentosId { get; set; }
