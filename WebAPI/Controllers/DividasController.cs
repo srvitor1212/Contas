@@ -32,11 +32,11 @@ namespace WebAPI.Controllers
 
             var pagamento = await _pagamentosService.GetById(dividasViewModel.PagamentosId);
             if (pagamento == null)
-                return BadRequest("Pagamento não existe"); //todo: Colocar como padrão dinheiro
+                dividasViewModel.PagamentosId = 1;
 
             var recebedor = await _recebedoresService.GetById(dividasViewModel.RecebedoresId);
             if (recebedor == null)
-                return BadRequest("Recebedor não existe"); //todo: Colocar um valor padrão em caso de zero
+                dividasViewModel.RecebedoresId = 1;
 
             DividasDTO dividaDTO = new DividasDTO(
                 dividasViewModel.Nome,
