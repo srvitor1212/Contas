@@ -53,7 +53,7 @@ namespace Domain.Entities
 
             DomainValidation.When(
                 nome.Length < 3,
-                "Nome precisa ter no mínimo 2 caracteres");
+                "Nome precisa ter no mínimo 3 caracteres");
 
             DomainValidation.When(
                 nome.Length > 150,
