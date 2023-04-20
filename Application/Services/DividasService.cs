@@ -30,6 +30,8 @@ namespace Application.Services
         public async Task<DividasDTO> Add(DividasDTO dividasDTO)
         {
             var dividasEntity = _mapper.Map<Dividas>(dividasDTO);
+            dividasEntity.DataCriacao = DateTime.Now;
+
             var created = await _dividasRepository.CreateAsync(dividasEntity);
             var retDTO = _mapper.Map<DividasDTO>(created);
             return retDTO;

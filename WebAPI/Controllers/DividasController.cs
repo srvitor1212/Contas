@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
                 dividasViewModel.RecebedoresId);
 
             var createdDTO = await _dividasService.Add(dividaDTO);
-            return Ok(createdDTO);
+            return Created("", createdDTO);
         }
 
         private void ModelNormalized(DividasViewModel model)
@@ -67,6 +67,8 @@ namespace WebAPI.Controllers
 
             if (model.DiaVencimento < 1 || model.DiaVencimento > 28)
                 model.DiaVencimento = 10;
+
+            model.FoiPago = false;
         }
     }
 }
