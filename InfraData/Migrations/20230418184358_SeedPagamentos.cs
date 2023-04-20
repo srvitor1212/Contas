@@ -45,7 +45,7 @@ namespace InfraData.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            //todo: comando de drop table
+            migrationBuilder.Sql("DELETE FROM Pagamentos");
         }
 
         private string NormalizeDateTime(int valor)
