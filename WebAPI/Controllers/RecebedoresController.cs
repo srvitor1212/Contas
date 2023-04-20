@@ -45,6 +45,9 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put (int id, [FromBody] RecebedoresDTO recebedoresDTO)
         {
+            if (id == 1 || recebedoresDTO.Id == 1)
+                BadRequest("Recebedor padrão não pode ser alterado");
+
             if (id != recebedoresDTO.Id)
                 return BadRequest("Id não confere");
 
@@ -59,6 +62,9 @@ namespace WebAPI.Controllers
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
+            if (id == 1)
+                BadRequest("Recebedor padrão não pode ser alterado");
+
             if (id == 0)
                 return NotFound();
 

@@ -45,6 +45,9 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] PagamentosDTO pagamentosDTO)
         {
+            if (id == 1 || pagamentosDTO.Id == 1)
+                return BadRequest("Pagamento em Dinheiro não pode ser alterado");
+
             if (id != pagamentosDTO.Id)
                 return BadRequest("Id não confere");
 
@@ -59,6 +62,9 @@ namespace WebAPI.Controllers
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
+            if (id == 1)
+                return BadRequest("Pagamento em Dinheiro não pode ser alterado");
+
             if (id == 0)
                 return NotFound();
 
