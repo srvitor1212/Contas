@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.ViewModel;
 
@@ -12,7 +13,7 @@ namespace WebAPI.Controllers
         private readonly IPagamentosServices _pagamentosService;
         private readonly IRecebedoresService _recebedoresService;
         public DividasController(
-            IDividasService dividasService, 
+            IDividasService dividasService,
             IPagamentosServices pagamentosService,
             IRecebedoresService recebedoresService)
         {
@@ -37,8 +38,18 @@ namespace WebAPI.Controllers
             if (recebedor == null)
                 return BadRequest("Recebedor não existe"); //todo: Colocar um valor padrão em caso de zero
 
-            //todo: gravar a divida
-            return Ok(dividasViewModel);
+            DividasDTO dividaDTO = new DividasDTO(
+                dividasViewModel.Nome,
+                dividasViewModel.Valor,
+                dividasViewModel.FoiPago,
+                dividasViewModel.DataInicio,
+                dividasViewModel.DataFim,
+                dividasViewModel.DiaVencimento,
+                dividasViewModel.PagamentosId,
+                dividasViewModel.RecebedoresId);
+
+            var createdDTO = await _dividasService.Add(dividaDTO);
+            return Ok(createdDTO);
         }
 
         private void ModelNormalized(DividasViewModel model)

@@ -27,10 +27,12 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task Add(DividasDTO dividasDTO)
+        public async Task<DividasDTO> Add(DividasDTO dividasDTO)
         {
             var dividasEntity = _mapper.Map<Dividas>(dividasDTO);
-            await _dividasRepository.CreateAsync(dividasEntity);
+            var created = await _dividasRepository.CreateAsync(dividasEntity);
+            var retDTO = _mapper.Map<DividasDTO>(created);
+            return retDTO;
         }
 
         public async Task Update(DividasDTO dividasDTO)
