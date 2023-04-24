@@ -19,7 +19,8 @@ namespace Application.Services
 
         public async Task<IEnumerable<DividasDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var dividasEntity = await _dividasRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<DividasDTO>>(dividasEntity);
         }
 
         public async Task<DividasDTO> GetById(string id)
