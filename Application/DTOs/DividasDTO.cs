@@ -31,23 +31,25 @@ namespace Application.DTOs
 
 
         public int PagamentosId { get; set; }
+        public PagamentosDTO Pagamentos { get; set; }
 
 
         public int RecebedoresId { get; set; }
+        public RecebedoresDTO Recebedores { get; set; }
 
         public DividasDTO()
         {
-            
+
         }
 
         public DividasDTO(
-            string nome, 
-            decimal valor, 
-            bool foipago, 
-            DateTime datainicio, 
-            DateTime datafim, 
-            byte diavencimento, 
-            int pagametosid, 
+            string nome,
+            decimal valor,
+            bool foipago,
+            DateTime datainicio,
+            DateTime datafim,
+            byte diavencimento,
+            int pagametosid,
             int recebedoresid)
         {
             this.Nome = nome;

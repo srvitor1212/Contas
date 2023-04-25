@@ -20,7 +20,9 @@ namespace Application.Services
         public async Task<IEnumerable<DividasDTO>> GetAllAsync()
         {
             var dividasEntity = await _dividasRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<DividasDTO>>(dividasEntity);
+
+            var dtos = _mapper.Map<IEnumerable<DividasDTO>>(dividasEntity);
+            return dtos;
         }
 
         public async Task<DividasDTO> GetById(string id)

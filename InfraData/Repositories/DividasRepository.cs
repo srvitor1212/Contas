@@ -29,7 +29,11 @@ namespace InfraData.Repositories
 
         public async Task<IEnumerable<Dividas>> GetAllAsync()
         {
-            return await _context.Dividas.ToListAsync();
+            var dividas = await _context.Dividas
+                .Include(x => x.Pagamentos)
+                .Include(x => x.Recebedores)
+                .ToListAsync();
+            return dividas;
         }
 
         public async Task<Dividas> GetByIdAsync(int? id)
