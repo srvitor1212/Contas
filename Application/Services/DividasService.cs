@@ -47,7 +47,8 @@ namespace Application.Services
 
         public async Task Delete(int? id)
         {
-            throw new NotImplementedException();
+            var entityDivida = await _dividasRepository.GetByIdAsync(id);
+            await _dividasRepository.DeleteAsync(entityDivida);
         }
 
     }

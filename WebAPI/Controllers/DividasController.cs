@@ -75,6 +75,26 @@ namespace WebAPI.Controllers
             return Created("", createdDTO);
         }
 
+        [HttpPut]
+        public async Task<ActionResult> Put(int id, [FromBody] EntradasDTO entradasDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> Delete(int id)
+        {
+            if (id == 0)
+                return NotFound();
+
+            var dividaDTO = await _dividasService.GetById(id);
+            if (dividaDTO == null)
+                return NotFound();
+
+            await _dividasService.Delete(id);
+            return Ok();
+        }
+
         private void ModelNormalized(DividasViewModel model)
         {
             model.DataInicio = new DateTime(

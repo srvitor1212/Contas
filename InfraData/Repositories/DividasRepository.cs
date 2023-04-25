@@ -22,11 +22,6 @@ namespace InfraData.Repositories
             return dividas;
         }
 
-        public async Task<Dividas> DeleteAsync(Dividas dividas)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<Dividas>> GetAllAsync()
         {
             var dividas = await _context.Dividas
@@ -49,9 +44,11 @@ namespace InfraData.Repositories
             return entity;
         }
 
-        public async Task<Dividas> RemoveAsync(Dividas dividas)
+        public async Task<Dividas> DeleteAsync(Dividas dividas)
         {
-            throw new NotImplementedException();
+            _context.Dividas.Remove(dividas);
+            await _context.SaveChangesAsync();
+            return dividas;
         }
 
         public async Task<Dividas> UpdateAsync(Dividas dividas)

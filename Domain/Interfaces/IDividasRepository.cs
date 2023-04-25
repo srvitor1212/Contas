@@ -8,7 +8,6 @@ namespace Domain.Interfaces
         Task<IEnumerable<Dividas>> GetAllAsync();
 
         Task<Dividas> CreateAsync(Dividas dividas);
-        Task<Dividas> RemoveAsync(Dividas dividas);
         Task<Dividas> UpdateAsync(Dividas dividas);
         Task<Dividas> DeleteAsync(Dividas dividas);
     }
