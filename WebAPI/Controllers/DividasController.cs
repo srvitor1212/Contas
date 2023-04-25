@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<IEnumerable<DividasDTO>>> Get()
         {
             var dividas = await _dividasService.GetAllAsync();
-            return Ok(dividas); //todo retornar o obj pagamento e recebedor ao invés de só o ID
+            return Ok(dividas);
         }
 
         [HttpPost]

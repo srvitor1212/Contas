@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Application.DTOs
 {
@@ -30,10 +31,12 @@ namespace Application.DTOs
         public byte DiaVencimento { get; set; }
 
 
+        [JsonIgnore]
         public int PagamentosId { get; set; }
         public PagamentosDTO Pagamentos { get; set; }
 
 
+        [JsonIgnore]
         public int RecebedoresId { get; set; }
         public RecebedoresDTO Recebedores { get; set; }
 
