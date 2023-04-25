@@ -39,11 +39,19 @@ namespace WebAPI.Controllers
 
             var pagamento = await _pagamentosService.GetById(dividasViewModel.PagamentosId);
             if (pagamento == null)
+            {
                 dividasViewModel.PagamentosId = 1;
+                pagamento = await _pagamentosService.GetById(dividasViewModel.PagamentosId);
+            }
+
 
             var recebedor = await _recebedoresService.GetById(dividasViewModel.RecebedoresId);
             if (recebedor == null)
+            {
                 dividasViewModel.RecebedoresId = 1;
+                recebedor = await _recebedoresService.GetById(dividasViewModel.RecebedoresId);
+            }
+
 
             DividasDTO dividaDTO = new DividasDTO(
                 dividasViewModel.Nome,
