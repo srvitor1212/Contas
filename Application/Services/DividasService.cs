@@ -24,9 +24,10 @@ namespace Application.Services
             return dividasDTOs;
         }
 
-        public async Task<DividasDTO> GetById(string id)
+        public async Task<DividasDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var dividaEntity = await _dividasRepository.GetByIdAsync(id);
+            return _mapper.Map<DividasDTO>(dividaEntity);
         }
 
         public async Task<DividasDTO> Add(DividasDTO dividasDTO)

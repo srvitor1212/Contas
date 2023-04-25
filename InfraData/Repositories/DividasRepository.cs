@@ -38,7 +38,15 @@ namespace InfraData.Repositories
 
         public async Task<Dividas> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Dividas.FindAsync(id);
+            if (entity == null)
+                return null;
+
+            // só fazendo isso já carrega os dados dentro de "entity"
+            var pag = await _context.Pagamentos.FindAsync(entity.PagamentosId);
+            var rec = await _context.Recebedores.FindAsync(entity.RecebedoresId);
+
+            return entity;
         }
 
         public async Task<Dividas> RemoveAsync(Dividas dividas)

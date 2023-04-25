@@ -29,6 +29,16 @@ namespace WebAPI.Controllers
             return Ok(dividas);
         }
 
+        [HttpGet("{id}", Name = "GetDivida")]
+        public async Task<ActionResult<DividasDTO>> Get(int id)
+        {
+            var dividaDTO = await _dividasService.GetById(id);
+            if (dividaDTO == null)
+                return NotFound();
+
+            return Ok(dividaDTO);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] DividasViewModel dividasViewModel)
         {
@@ -44,14 +54,12 @@ namespace WebAPI.Controllers
                 pagamento = await _pagamentosService.GetById(dividasViewModel.PagamentosId);
             }
 
-
             var recebedor = await _recebedoresService.GetById(dividasViewModel.RecebedoresId);
             if (recebedor == null)
             {
                 dividasViewModel.RecebedoresId = 1;
                 recebedor = await _recebedoresService.GetById(dividasViewModel.RecebedoresId);
             }
-
 
             DividasDTO dividaDTO = new DividasDTO(
                 dividasViewModel.Nome,
