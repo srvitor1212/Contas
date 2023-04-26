@@ -78,7 +78,7 @@ namespace WebAPI.Controllers
         [HttpPut]
         public async Task<ActionResult> Put(int id, [FromBody] EntradasDTO entradasDTO)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); //todo
         }
 
         [HttpDelete]
