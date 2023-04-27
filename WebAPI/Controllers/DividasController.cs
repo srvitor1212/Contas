@@ -76,9 +76,30 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put(int id, [FromBody] EntradasDTO entradasDTO)
+        public async Task<ActionResult> Put(int id, [FromBody] DividasViewModel dividasViewModel)
         {
-            throw new NotImplementedException(); //todo
+            var dividaEntity = await _dividasService.GetById(id);
+            if (dividaEntity == null)
+                return NotFound("Registro divida não encontrado");
+
+            var pagamento = await _pagamentosService.GetById(dividasViewModel.PagamentosId);
+            if (pagamento == null)
+                return BadRequest("Pagamento informado não existe");
+
+            var recebedor = await _recebedoresService.GetById(dividasViewModel.RecebedoresId);
+            if (recebedor == null)
+                return BadRequest("Recebedor informado não existe");
+
+            DividasDTO dividasDTO = new DividasDTO(
+                id, //todo: converter para DTO para enviar para service
+                dividasViewModel.Valor,
+                dividasViewModel.FoiPago,
+                dividasViewModel.DataInicio,
+                dividasViewModel.DataFim,
+                dividasViewModel.DiaVencimento,
+                dividasViewModel.PagamentosId,
+                dividasViewModel.RecebedoresId);
+            return Ok("Não implmentado"); //todo
         }
 
         [HttpDelete]
