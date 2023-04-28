@@ -53,7 +53,9 @@ namespace InfraData.Repositories
 
         public async Task<Dividas> UpdateAsync(Dividas dividas)
         {
-            throw new NotImplementedException();
+            _context.Update(dividas);
+            await _context.SaveChangesAsync();
+            return dividas;
         }
     }
 }

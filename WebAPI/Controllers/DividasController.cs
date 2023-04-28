@@ -43,6 +43,7 @@ namespace WebAPI.Controllers
         public async Task<ActionResult> Post([FromBody] DividasViewModel dividasViewModel)
         {
             ModelNormalized(dividasViewModel);
+            dividasViewModel.FoiPago = false;
 
             if (dividasViewModel.DataInicio > dividasViewModel.DataFim)
                 return BadRequest("Data inicio maior que data fim");
@@ -90,6 +91,8 @@ namespace WebAPI.Controllers
             if (recebedor == null)
                 return BadRequest("Recebedor informado não existe");
 
+            ModelNormalized(dividasViewModel);
+
             DividasDTO dividasDTO = new DividasDTO(
                 id,
                 dividasViewModel.Nome,
@@ -100,7 +103,9 @@ namespace WebAPI.Controllers
                 dividasViewModel.DiaVencimento,
                 dividasViewModel.PagamentosId,
                 dividasViewModel.RecebedoresId);
-            return Ok("Não implmentado"); //todo
+
+            await _dividasService.Update(dividasDTO);
+            return Ok(dividasViewModel);
         }
 
         [HttpDelete]
@@ -132,8 +137,6 @@ namespace WebAPI.Controllers
 
             if (model.DiaVencimento < 1 || model.DiaVencimento > 28)
                 model.DiaVencimento = 10;
-
-            model.FoiPago = false;
         }
     }
 }

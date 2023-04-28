@@ -42,7 +42,23 @@ namespace Application.Services
 
         public async Task Update(DividasDTO dividasDTO)
         {
-            throw new NotImplementedException();
+            var dividaEntity = await _dividasRepository.GetByIdAsync(dividasDTO.Id);
+            if (dividaEntity != null)
+            {
+                dividaEntity.Update(
+                    dividasDTO.Nome,
+                    dividasDTO.Valor,
+                    dividasDTO.FoiPago,
+                    dividasDTO.DataInicio,
+                    dividasDTO.DataFim, 
+                    dividasDTO.DiaVencimento,
+                    dividasDTO.PagamentosId,
+                    dividasDTO.RecebedoresId
+                    );
+                dividaEntity.DataAtualizacao = DateTime.Now;
+
+                await _dividasRepository.UpdateAsync(dividaEntity);
+            }
         }
 
         public async Task Delete(int? id)

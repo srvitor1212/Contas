@@ -37,10 +37,14 @@ namespace Domain.Entities
         }
 
         public void Update(string nome, decimal valor, bool FoiPago,
-            DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
+            DateTime DataInicio, DateTime DataFim, byte DiaVencimento,
+            int pagamentosId, int recebedoresId)
         {
             Validation(nome, valor, FoiPago,
                 DataInicio, DataFim, DiaVencimento);
+            
+            this.PagamentosId = pagamentosId;
+            this.RecebedoresId = recebedoresId;
         }
 
         public void Validation(string nome, decimal valor, bool FoiPago,
