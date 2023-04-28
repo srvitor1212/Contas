@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace WebAPI.ViewModel
+﻿namespace WebAPI.ViewModel
 {
     public class DividasViewModel
     {

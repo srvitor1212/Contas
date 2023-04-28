@@ -64,5 +64,27 @@ namespace Application.DTOs
             this.PagamentosId = pagametosid;
             this.RecebedoresId = recebedoresid;
         }
+
+        public DividasDTO(
+            int id,
+            string nome,
+            decimal valor,
+            bool foipago,
+            DateTime datainicio,
+            DateTime datafim,
+            byte diavencimento,
+            int pagametosid,
+            int recebedoresid)
+        {
+            this.Id = id;
+            this.Nome = nome;
+            this.Valor = valor;
+            this.FoiPago = foipago;
+            this.DataInicio = datainicio;
+            this.DataFim = datafim;
+            this.DiaVencimento = diavencimento;
+            this.PagamentosId = pagametosid;
+            this.RecebedoresId = recebedoresid;
+        }
     }
 }

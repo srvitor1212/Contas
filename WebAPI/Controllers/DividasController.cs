@@ -91,7 +91,8 @@ namespace WebAPI.Controllers
                 return BadRequest("Recebedor informado não existe");
 
             DividasDTO dividasDTO = new DividasDTO(
-                id, //todo: converter para DTO para enviar para service
+                id,
+                dividasViewModel.Nome,
                 dividasViewModel.Valor,
                 dividasViewModel.FoiPago,
                 dividasViewModel.DataInicio,
