@@ -19,28 +19,50 @@ namespace Application.Services
 
         public async Task<IEnumerable<RecebedoresDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var recebedoresEntity = await _recebedoresRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<RecebedoresDTO>>(recebedoresEntity);
         }
 
-        public async Task<RecebedoresDTO> GetById(string id)
+        public async Task<RecebedoresDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var recebedoresEntity = await _recebedoresRepository.GetByIdAsync(id);
+            return _mapper.Map<RecebedoresDTO>(recebedoresEntity);
         }
 
-        public async Task Add(RecebedoresDTO recebedoresDTO)
+        public async Task<RecebedoresDTO> Add(RecebedoresDTO recebedoresDTO)
         {
+            DateTime agora = DateTime.Now;
+
             var recebedorEntity = _mapper.Map<Recebedores>(recebedoresDTO);
-            await _recebedoresRepository.CreateAsync(recebedorEntity);
+            recebedorEntity.DataCriacao = agora;
+            recebedorEntity.DataAtualizacao = agora;
+
+            var recebedorEntityCreated =
+                await _recebedoresRepository.CreateAsync(recebedorEntity);
+            var retRecebedorDTO = 
+                _mapper.Map<RecebedoresDTO>(recebedorEntityCreated);
+
+            return retRecebedorDTO;
         }
 
         public async Task Update(RecebedoresDTO recebedoresDTO)
         {
-            throw new NotImplementedException();
+            var recebedorEntitiy = await _recebedoresRepository.GetByIdAsync(recebedoresDTO.Id);
+            if (recebedorEntitiy != null)
+            {
+                recebedorEntitiy.Update(
+                    recebedoresDTO.Nome
+                    );
+                recebedorEntitiy.DataAtualizacao = DateTime.Now;
+
+                await _recebedoresRepository.UpdateAsync(recebedorEntitiy);
+            }
         }
 
         public async Task Delete(int? id)
         {
-            throw new NotImplementedException();
+            var recebedoreEntity = await _recebedoresRepository.GetByIdAsync(id);
+            await _recebedoresRepository.RemoveAsync(recebedoreEntity);
         }
 
     }

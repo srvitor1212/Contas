@@ -19,28 +19,50 @@ namespace Application.Services
 
         public async Task<IEnumerable<PagamentosDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var pagamentosEntity = await _pagamentosRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<PagamentosDTO>>(pagamentosEntity);
         }
 
-        public async Task<PagamentosDTO> GetById(string id)
+        public async Task<PagamentosDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var pagamentoEntity = await _pagamentosRepository.GetByIdAsync(id);
+            return _mapper.Map<PagamentosDTO>(pagamentoEntity);
         }
 
-        public async Task Add(PagamentosDTO pagamentosDTO)
+        public async Task<PagamentosDTO> Add(PagamentosDTO pagamentosDTO)
         {
+            DateTime agora = DateTime.Now;
+
             var pagamentosEntity = _mapper.Map<Pagamentos>(pagamentosDTO);
-            await _pagamentosRepository.CreateAsync(pagamentosEntity);
+            pagamentosEntity.DataCriacao = agora;
+            pagamentosEntity.DataAtualizacao = agora;
+
+            var pagamentosEntityCreated = 
+                await _pagamentosRepository.CreateAsync(pagamentosEntity);
+            var retPagamentosDTO = 
+                _mapper.Map<PagamentosDTO>(pagamentosEntityCreated);
+
+            return retPagamentosDTO;
         }
 
         public async Task Update(PagamentosDTO pagamentosDTO)
         {
-            throw new NotImplementedException();
+            var pagamentoEntity = await _pagamentosRepository.GetByIdAsync(pagamentosDTO.Id);
+            if (pagamentoEntity != null)
+            {
+                pagamentoEntity.Update(
+                    pagamentosDTO.Nome
+                    );
+                pagamentoEntity.DataAtualizacao = DateTime.Now;
+
+                await _pagamentosRepository.UpdateAsync(pagamentoEntity);
+            }
         }
 
         public async Task Delete(int? id)
         {
-            throw new NotImplementedException();
+            var pagamentoEntity = await _pagamentosRepository.GetByIdAsync(id);
+            await _pagamentosRepository.RemoveAsync(pagamentoEntity);
         }
 
     }

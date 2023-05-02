@@ -19,28 +19,52 @@ namespace Application.Services
 
         public async Task<IEnumerable<DividasDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var dividasEntity = await _dividasRepository.GetAllAsync();
+            var dividasDTOs = _mapper.Map<IEnumerable<DividasDTO>>(dividasEntity);
+            return dividasDTOs;
         }
 
-        public async Task<DividasDTO> GetById(string id)
+        public async Task<DividasDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var dividaEntity = await _dividasRepository.GetByIdAsync(id);
+            return _mapper.Map<DividasDTO>(dividaEntity);
         }
 
-        public async Task Add(DividasDTO dividasDTO)
+        public async Task<DividasDTO> Add(DividasDTO dividasDTO)
         {
             var dividasEntity = _mapper.Map<Dividas>(dividasDTO);
-            await _dividasRepository.CreateAsync(dividasEntity);
+            dividasEntity.DataCriacao = DateTime.Now;
+
+            var created = await _dividasRepository.CreateAsync(dividasEntity);
+            var retDTO = _mapper.Map<DividasDTO>(created);
+            return retDTO;
         }
 
         public async Task Update(DividasDTO dividasDTO)
         {
-            throw new NotImplementedException();
+            var dividaEntity = await _dividasRepository.GetByIdAsync(dividasDTO.Id);
+            if (dividaEntity != null)
+            {
+                dividaEntity.Update(
+                    dividasDTO.Nome,
+                    dividasDTO.Valor,
+                    dividasDTO.FoiPago,
+                    dividasDTO.DataInicio,
+                    dividasDTO.DataFim, 
+                    dividasDTO.DiaVencimento,
+                    dividasDTO.PagamentosId,
+                    dividasDTO.RecebedoresId
+                    );
+                dividaEntity.DataAtualizacao = DateTime.Now;
+
+                await _dividasRepository.UpdateAsync(dividaEntity);
+            }
         }
 
         public async Task Delete(int? id)
         {
-            throw new NotImplementedException();
+            var entityDivida = await _dividasRepository.GetByIdAsync(id);
+            await _dividasRepository.DeleteAsync(entityDivida);
         }
 
     }

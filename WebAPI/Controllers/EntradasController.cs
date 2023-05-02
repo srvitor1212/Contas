@@ -22,11 +22,11 @@ namespace WebAPI.Controllers
             return Ok(entradas);
         }
 
-        [HttpGet("{id}", Name = "GetById")]
+        [HttpGet("{id}", Name = "GetEntrada")]
         public async Task<ActionResult<EntradasDTO>> Get(int id)
         {
             var entradaDTO = await _entradasService.GetById(id);
-            if(entradaDTO == null)
+            if (entradaDTO == null)
                 return NotFound();
 
             return Ok(entradaDTO);
@@ -75,11 +75,11 @@ namespace WebAPI.Controllers
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
-            if(id == 0) 
+            if (id == 0) 
                 return NotFound();
 
             var entradaDTO = await _entradasService.GetById(id);
-            if(entradaDTO == null)
+            if (entradaDTO == null)
                 return NotFound();
 
             await _entradasService.Delete(id);

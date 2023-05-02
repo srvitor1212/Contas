@@ -5,8 +5,8 @@ namespace Application.Interfaces
     public interface IPagamentosServices
     {
         Task<IEnumerable<PagamentosDTO>> GetAllAsync();
-        Task<PagamentosDTO> GetById(string id);
-        Task Add(PagamentosDTO recebedoresDTO);
+        Task<PagamentosDTO> GetById(int id);
+        Task<PagamentosDTO> Add(PagamentosDTO recebedoresDTO);
         Task Update(PagamentosDTO recebedoresDTO);
         Task Delete(int? id);
     }

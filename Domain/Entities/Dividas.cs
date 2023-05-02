@@ -6,10 +6,10 @@ namespace Domain.Entities
     {
         public string Nome { get; private set; }
         public decimal Valor { get; private set; }
-        public bool FoiPago { get; private set; }
+        public bool FoiPago { get; private set; } = false;
         public DateTime DataInicio { get; private set; }
         public DateTime DataFim { get; private set; }
-        public byte DiaVencimento { get; set; }
+        public byte DiaVencimento { get; private set; }
 
         public int PagamentosId { get; set; }
         public Pagamentos Pagamentos { get; set; }
@@ -36,6 +36,17 @@ namespace Domain.Entities
                 DataInicio, DataFim, DiaVencimento);
         }
 
+        public void Update(string nome, decimal valor, bool FoiPago,
+            DateTime DataInicio, DateTime DataFim, byte DiaVencimento,
+            int pagamentosId, int recebedoresId)
+        {
+            Validation(nome, valor, FoiPago,
+                DataInicio, DataFim, DiaVencimento);
+            
+            this.PagamentosId = pagamentosId;
+            this.RecebedoresId = recebedoresId;
+        }
+
         public void Validation(string nome, decimal valor, bool FoiPago,
             DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
         {
@@ -46,7 +57,7 @@ namespace Domain.Entities
 
             DomainValidation.When(
                 nome.Length < 3,
-                "Nome precisa ter no mínimo 2 caracteres");
+                "Nome precisa ter no mínimo 3 caracteres");
 
             DomainValidation.When(
                 nome.Length > 150,

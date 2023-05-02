@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 using InfraData.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace InfraData.Repositories
 {
@@ -28,22 +29,26 @@ namespace InfraData.Repositories
 
         public async Task<IEnumerable<Recebedores>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Recebedores.ToListAsync();
         }
 
         public async Task<Recebedores> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Recebedores.FindAsync(id);
         }
 
         public async Task<Recebedores> RemoveAsync(Recebedores recebedores)
         {
-            throw new NotImplementedException();
+            _context.Remove(recebedores);
+            await _context.SaveChangesAsync();
+            return recebedores;
         }
 
         public async Task<Recebedores> UpdateAsync(Recebedores recebedores)
         {
-            throw new NotImplementedException();
+            _context.Update(recebedores);
+            await _context.SaveChangesAsync();
+            return recebedores;
         }
     }
 }

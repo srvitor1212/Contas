@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs
+namespace WebAPI.ViewModel
 {
-    public class RecebedoresDTO
+    public class PagamentosViewModel
     {
-        public int Id { get; set; }
-
         [Required(ErrorMessage = "Nome obrigatório")]
         [MinLength(3)]
         [MaxLength(200)]

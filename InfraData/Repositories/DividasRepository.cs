@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 using InfraData.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace InfraData.Repositories
 {
@@ -21,29 +22,40 @@ namespace InfraData.Repositories
             return dividas;
         }
 
-        public async Task<Dividas> DeleteAsync(Dividas dividas)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<Dividas>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var dividas = await _context.Dividas
+                .Include(x => x.Pagamentos)
+                .Include(x => x.Recebedores)
+                .ToListAsync();
+            return dividas;
         }
 
         public async Task<Dividas> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Dividas.FindAsync(id);
+            if (entity == null)
+                return null;
+
+            // só fazendo isso já carrega os dados dentro de "entity"
+            var pag = await _context.Pagamentos.FindAsync(entity.PagamentosId);
+            var rec = await _context.Recebedores.FindAsync(entity.RecebedoresId);
+
+            return entity;
         }
 
-        public async Task<Dividas> RemoveAsync(Dividas dividas)
+        public async Task<Dividas> DeleteAsync(Dividas dividas)
         {
-            throw new NotImplementedException();
+            _context.Dividas.Remove(dividas);
+            await _context.SaveChangesAsync();
+            return dividas;
         }
 
         public async Task<Dividas> UpdateAsync(Dividas dividas)
         {
-            throw new NotImplementedException();
+            _context.Update(dividas);
+            await _context.SaveChangesAsync();
+            return dividas;
         }
     }
 }

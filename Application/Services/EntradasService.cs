@@ -50,9 +50,11 @@ namespace Application.Services
             var entradaEntity = await _entradasRepository.GetByIdAsync(entradasDTO.Id);
             if (entradaEntity != null)
             {
-                entradaEntity.Nome = entradasDTO.Nome;
-                entradaEntity.Valor = entradasDTO.Valor;
-                entradaEntity.DataVigencia = entradasDTO.DataVigencia;
+                entradaEntity.Update(
+                    entradasDTO.Nome,
+                    entradasDTO.Valor,
+                    entradasDTO.DataVigencia
+                    );
                 entradaEntity.DataAtualizacao = DateTime.Now;
 
                 await _entradasRepository.UpdateAsync(entradaEntity);
