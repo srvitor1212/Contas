@@ -18,9 +18,6 @@ namespace Application.DTOs
         public decimal Valor { get; set; }
 
 
-        public bool FoiPago { get; set; } = false;
-
-
         public DateTime DataInicio { get; set; }
 
 
@@ -48,7 +45,6 @@ namespace Application.DTOs
         public DividasDTO(
             string nome,
             decimal valor,
-            bool foipago,
             DateTime datainicio,
             DateTime datafim,
             byte diavencimento,
@@ -57,7 +53,6 @@ namespace Application.DTOs
         {
             this.Nome = nome;
             this.Valor = valor;
-            this.FoiPago = foipago;
             this.DataInicio = datainicio;
             this.DataFim = datafim;
             this.DiaVencimento = diavencimento;
@@ -69,7 +64,6 @@ namespace Application.DTOs
             int id,
             string nome,
             decimal valor,
-            bool foipago,
             DateTime datainicio,
             DateTime datafim,
             byte diavencimento,
@@ -79,7 +73,6 @@ namespace Application.DTOs
             this.Id = id;
             this.Nome = nome;
             this.Valor = valor;
-            this.FoiPago = foipago;
             this.DataInicio = datainicio;
             this.DataFim = datafim;
             this.DiaVencimento = diavencimento;
