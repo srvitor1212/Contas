@@ -13,6 +13,7 @@ namespace InfraData.Context
         public DbSet<Entradas> Entradas { get; set; }
         public DbSet<Pagamentos> Pagamentos { get; set; }
         public DbSet<Recebedores> Recebedores { get; set; }
+        public DbSet<PagamentoDeDividas> PagamentoDeDividas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
