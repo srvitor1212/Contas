@@ -31,6 +31,7 @@ namespace InfraIOC
             services.AddScoped<IEntradasService, EntradasService>();
             services.AddScoped<IPagamentosServices, PagamentosService>();
             services.AddScoped<IRecebedoresService, RecebedoresService>();
+            services.AddScoped<IPagamentoDeDividasService, PagamentoDeDividasService>();
             services.AddAutoMapper(typeof(DomainToDTO));
 
             return services;
