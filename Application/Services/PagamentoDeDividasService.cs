@@ -1,16 +1,16 @@
-﻿using Application.Interfaces;
-using Domain.Entities;
+﻿using Application.DTOs;
+using Application.Interfaces;
 
 namespace Application.Services
 {
     public class PagamentoDeDividasService : IPagamentoDeDividasService
     {
-        public Task<PagamentoDeDividas> CreateAsync(PagamentoDeDividas pagamentoDeDividas)
+        public Task<PagamentoDeDividasDTO> CreateAsync(PagamentoDeDividasDTO pagamentoDeDividas)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PagamentoDeDividas> DeleteAsync(PagamentoDeDividas pagamentoDeDividas)
+        public Task<PagamentoDeDividasDTO> DeleteAsync(PagamentoDeDividasDTO pagamentoDeDividas)
         {
             throw new NotImplementedException();
         }
@@ -20,7 +20,7 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<PagamentoDeDividas>> GetAllAsync(int? idDivida)
+        public Task<IEnumerable<PagamentoDeDividasDTO>> GetAllAsync(int? idDivida)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -12,6 +13,17 @@ namespace WebAPI.Controllers
             IPagamentoDeDividasService pagamentoDeDividasService)
         {
             this._pagamentoDeDividasService = pagamentoDeDividasService;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<PagamentoDeDividasDTO>>> Get(int idDivida)
+        {
+            if (idDivida <= 0)
+                return NotFound();
+
+            await _pagamentoDeDividasService.GetAllAsync(idDivida);
+
+            return BadRequest();
         }
     }
 }
