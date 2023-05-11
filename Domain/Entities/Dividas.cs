@@ -16,6 +16,8 @@ namespace Domain.Entities
         public int RecebedoresId { get; set; }
         public Recebedores Recebedores { get; set; }
 
+        public ICollection<PagamentoDeDividas> PagamentoDeDividas { get; set; }
+
         public Dividas(string nome, decimal valor, DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
         {
             Validation(nome, valor, DataInicio, DataFim, DiaVencimento);

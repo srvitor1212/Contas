@@ -12,6 +12,11 @@ namespace InfraData.EntitiesConfiguration
 
             builder.Property(x => x.DataEfetivacao).IsRequired();
             builder.Property(x => x.DividasId).IsRequired();
+
+            builder
+                .HasOne(x => x.Dividas)
+                .WithMany(x => x.PagamentoDeDividas)
+                .HasForeignKey(x => x.DividasId);
         }
     }
 }
