@@ -9,24 +9,23 @@ namespace Domain.Entities
         public int DividasId { get; set; }
         public Dividas Dividas { get; set; }
 
-        public PagamentoDeDividas(int id, DateTime dataEfetivacao, int dividaId)
+        public PagamentoDeDividas(int id, DateTime dataEfetivacao)
         {
             DomainValidation.When(
                 id < 0,
                 "Id inválido");
             this.Id = id;
 
-            Validation(dataEfetivacao, dividaId);
+            Validation(dataEfetivacao);
         }
 
-        public PagamentoDeDividas(DateTime dataEfetivacao, int dividaId)
+        public PagamentoDeDividas(DateTime dataEfetivacao)
         {
-            Validation(dataEfetivacao, dividaId);
+            Validation(dataEfetivacao);
         }
 
-        public void Validation(DateTime dataEfetivacao, int dividaId)
+        public void Validation(DateTime dataEfetivacao)
         {
-            this.DividasId = dividaId;
             this.DataEfetivacao = dataEfetivacao;
         }
     }
