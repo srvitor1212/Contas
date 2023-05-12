@@ -16,7 +16,6 @@ namespace WebAPI.Controllers
         {
             this._pagamentoDeDividasService = pagamentoDeDividasService;
             this._dividasService = dividasService;
-
         }
 
         [HttpGet]
@@ -32,6 +31,17 @@ namespace WebAPI.Controllers
             await _pagamentoDeDividasService.GetAllAsync(idDivida);
 
             return BadRequest();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Post([FromBody] PagamentoDeDividasDTO pagamentoDeDividasDTO)
+        {
+            var divida = await _dividasService.GetById(pagamentoDeDividasDTO.DividasId);
+            if (divida == null)
+                return NotFound();
+
+            var created = await _pagamentoDeDividasService.CreateAsync(pagamentoDeDividasDTO);
+            return Created("", created);
         }
     }
 }

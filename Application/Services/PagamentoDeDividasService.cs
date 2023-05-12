@@ -1,5 +1,7 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
+using AutoMapper;
+using Domain.Entities;
 using Domain.Interfaces;
 
 namespace Application.Services
@@ -8,18 +10,35 @@ namespace Application.Services
     {
         private IPagamentoDeDividasRepository _pagamentoDeDividasRepository;
         private IDividasRepository _dividasRepository;
+        private readonly IMapper _mapper;
         public PagamentoDeDividasService(
             IPagamentoDeDividasRepository pagamentoDeDividasRepository,
-            IDividasRepository dividasRepository)
+            IDividasRepository dividasRepository,
+            IMapper mapper)
         {
             this._pagamentoDeDividasRepository = pagamentoDeDividasRepository;
             this._dividasRepository = dividasRepository;
+            this._mapper = mapper;
         }
 
 
-        public Task<PagamentoDeDividasDTO> CreateAsync(PagamentoDeDividasDTO pagamentoDeDividas)
+        public async Task<PagamentoDeDividasDTO> CreateAsync(PagamentoDeDividasDTO pagamentoDeDividasDTO)
         {
-            throw new NotImplementedException();
+            DateTime agora = DateTime.Now;
+
+            PagamentoDeDividas pagamentosEntity = new PagamentoDeDividas();
+            pagamentosEntity.DividasId = pagamentoDeDividasDTO.DividasId;
+            pagamentosEntity.DataCriacao = agora;
+            pagamentosEntity.DataAtualizacao = agora;
+
+            if (pagamentoDeDividasDTO.DataEfetivacao.Year.ToString() == "1")
+                pagamentosEntity.DataEfetivacao = DateTime.Now;
+            else
+                pagamentosEntity.DataEfetivacao = pagamentoDeDividasDTO.DataEfetivacao;
+            
+            var created = await _pagamentoDeDividasRepository.CreateAsync(pagamentosEntity);
+            var retDTO = _mapper.Map<PagamentoDeDividasDTO>(created);
+            return retDTO;
         }
 
         public Task<PagamentoDeDividasDTO> DeleteAsync(PagamentoDeDividasDTO pagamentoDeDividas)

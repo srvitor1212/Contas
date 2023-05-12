@@ -4,10 +4,13 @@ namespace Domain.Entities
 {
     public sealed class PagamentoDeDividas : Base
     {
-        public DateTime DataEfetivacao { get; private set; }
+        public DateTime DataEfetivacao { get; set; }
 
         public int DividasId { get; set; }
         public Dividas Dividas { get; set; }
+
+        public PagamentoDeDividas()
+        { }
 
         public PagamentoDeDividas(int id, DateTime dataEfetivacao)
         {
