@@ -41,7 +41,7 @@ namespace Application.Services
             return retDTO;
         }
 
-        public Task<PagamentoDeDividasDTO> DeleteAsync(PagamentoDeDividasDTO pagamentoDeDividas)
+        public Task<PagamentoDeDividasDTO> DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -58,6 +58,11 @@ namespace Application.Services
                 <IEnumerable<PagamentoDeDividasDTO>>(pagamentosEntity);
 
             return retDTO;
+        }
+
+        public Task<PagamentoDeDividasDTO> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

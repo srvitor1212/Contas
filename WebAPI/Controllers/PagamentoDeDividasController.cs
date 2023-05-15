@@ -34,5 +34,11 @@ namespace WebAPI.Controllers
             var created = await _pagamentoDeDividasService.CreateAsync(pagamentoDeDividasDTO);
             return Created("", created);
         }
+
+        [HttpDelete]
+        public async Task<ActionResult> Delete(int id)
+        {
+            return Ok(await _pagamentoDeDividasService.DeleteAsync(id));
+        }
     }
 }

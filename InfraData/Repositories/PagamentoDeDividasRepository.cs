@@ -22,7 +22,7 @@ namespace InfraData.Repositories
             return pagamentoDeDividas;
         }
 
-        public async Task<PagamentoDeDividas> DeleteAsync(PagamentoDeDividas pagamentoDeDividas)
+        public async Task<PagamentoDeDividas> DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -36,6 +36,11 @@ namespace InfraData.Repositories
         {
             var entity = await _context.PagamentoDeDividas.ToListAsync();
             return entity;
+        }
+
+        public Task<PagamentoDeDividas> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
