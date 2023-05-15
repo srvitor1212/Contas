@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 using InfraData.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace InfraData.Repositories
 {
@@ -21,19 +22,20 @@ namespace InfraData.Repositories
             return pagamentoDeDividas;
         }
 
-        public Task<PagamentoDeDividas> DeleteAsync(PagamentoDeDividas pagamentoDeDividas)
+        public async Task<PagamentoDeDividas> DeleteAsync(PagamentoDeDividas pagamentoDeDividas)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> FoiPago(int idDivida, DateTime date)
+        public async Task<bool> FoiPago(int idDivida, DateTime date)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<PagamentoDeDividas>> GetAllAsync(int? idDivida)
+        public async Task<IEnumerable<PagamentoDeDividas>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var entity = await _context.PagamentoDeDividas.ToListAsync();
+            return entity;
         }
     }
 }

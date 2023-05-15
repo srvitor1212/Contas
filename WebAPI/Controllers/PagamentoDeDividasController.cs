@@ -19,18 +19,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PagamentoDeDividasDTO>>> Get(int idDivida)
+        public async Task<ActionResult<IEnumerable<PagamentoDeDividasDTO>>> Get()
         {
-            if (idDivida <= 0)
-                return NotFound();
-
-            var divida = await _dividasService.GetById(idDivida);
-            if (divida == null)
-                return NotFound();
-
-            await _pagamentoDeDividasService.GetAllAsync(idDivida);
-
-            return BadRequest();
+            return Ok(await _pagamentoDeDividasService.GetAllAsync());
         }
 
         [HttpPost]

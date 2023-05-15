@@ -51,12 +51,13 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<PagamentoDeDividasDTO>> GetAllAsync(int idDivida)
+        public async Task<IEnumerable<PagamentoDeDividasDTO>> GetAllAsync()
         {
-            var entity = await _dividasRepository.GetByIdAsync(idDivida);
+            var pagamentosEntity = await _pagamentoDeDividasRepository.GetAllAsync();
+            var retDTO = _mapper.Map
+                <IEnumerable<PagamentoDeDividasDTO>>(pagamentosEntity);
 
-            //todo: todoas que for idDivida
-            throw new NotImplementedException();
+            return retDTO;
         }
     }
 }

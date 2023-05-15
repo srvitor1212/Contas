@@ -4,7 +4,7 @@ namespace Domain.Interfaces
 {
     public interface IPagamentoDeDividasRepository
     {
-        Task<IEnumerable<PagamentoDeDividas>> GetAllAsync(int? idDivida);
+        Task<IEnumerable<PagamentoDeDividas>> GetAllAsync();
         Task<PagamentoDeDividas> CreateAsync(PagamentoDeDividas pagamentoDeDividas);
         Task<PagamentoDeDividas> DeleteAsync(PagamentoDeDividas pagamentoDeDividas);
 
