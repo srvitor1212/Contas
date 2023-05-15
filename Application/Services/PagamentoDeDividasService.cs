@@ -41,9 +41,10 @@ namespace Application.Services
             return retDTO;
         }
 
-        public Task<PagamentoDeDividasDTO> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _pagamentoDeDividasRepository.GetByIdAsync(id);
+            await _pagamentoDeDividasRepository.DeleteAsync(entity);
         }
 
         public Task<bool> FoiPago(int idDivida, DateTime date)
@@ -60,9 +61,10 @@ namespace Application.Services
             return retDTO;
         }
 
-        public Task<PagamentoDeDividasDTO> GetByIdAsync(int id)
+        public async Task<PagamentoDeDividasDTO> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _pagamentoDeDividasRepository.GetByIdAsync(id);
+            return _mapper.Map<PagamentoDeDividasDTO>(entity);
         }
     }
 }

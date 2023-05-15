@@ -24,9 +24,20 @@ namespace WebAPI.Controllers
             return Ok(await _pagamentoDeDividasService.GetAllAsync());
         }
 
+        [HttpGet("{id}", Name = "GetPagamentoDeDivida")]
+        public async Task<ActionResult<PagamentoDeDividasDTO>> Get(int id)
+        {
+            var pagamentoDTO = await _pagamentoDeDividasService.GetByIdAsync(id);
+            if (pagamentoDTO == null)
+                return NotFound();
+
+            return Ok(pagamentoDTO);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] PagamentoDeDividasDTO pagamentoDeDividasDTO)
         {
+            //todo: criar uma view model para não mostra ID, e na DTO mostrar o ID
             var divida = await _dividasService.GetById(pagamentoDeDividasDTO.DividasId);
             if (divida == null)
                 return NotFound();
@@ -38,7 +49,15 @@ namespace WebAPI.Controllers
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
-            return Ok(await _pagamentoDeDividasService.DeleteAsync(id));
+            if (id == 0)
+                return NotFound();
+
+            var pagamentoDTO = await _pagamentoDeDividasService.GetByIdAsync(id);
+            if (pagamentoDTO == null)
+                return NotFound();
+
+            await _pagamentoDeDividasService.DeleteAsync(id);
+            return Ok();
         }
     }
 }

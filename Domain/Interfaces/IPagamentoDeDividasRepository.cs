@@ -7,7 +7,7 @@ namespace Domain.Interfaces
         Task<IEnumerable<PagamentoDeDividas>> GetAllAsync();
         Task<PagamentoDeDividas> GetByIdAsync(int id);
         Task<PagamentoDeDividas> CreateAsync(PagamentoDeDividas pagamentoDeDividas);
-        Task<PagamentoDeDividas> DeleteAsync(int id);
+        Task<PagamentoDeDividas> DeleteAsync(PagamentoDeDividas pagamentoDeDividas);
 
         //Task<bool> FoiPago(int idDivida, DateTime date);
     }

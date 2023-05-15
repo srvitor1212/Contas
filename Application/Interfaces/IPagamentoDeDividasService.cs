@@ -7,7 +7,7 @@ namespace Application.Interfaces
         Task<IEnumerable<PagamentoDeDividasDTO>> GetAllAsync();
         Task<PagamentoDeDividasDTO> GetByIdAsync(int id);
         Task<PagamentoDeDividasDTO> CreateAsync(PagamentoDeDividasDTO pagamentoDeDividas);
-        Task<PagamentoDeDividasDTO> DeleteAsync(int id);
+        Task DeleteAsync(int id);
 
         //Task<bool> FoiPago(int idDivida, DateTime date);
     }

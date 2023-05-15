@@ -22,9 +22,11 @@ namespace InfraData.Repositories
             return pagamentoDeDividas;
         }
 
-        public async Task<PagamentoDeDividas> DeleteAsync(int id)
+        public async Task<PagamentoDeDividas> DeleteAsync(PagamentoDeDividas pagamentoDeDividas)
         {
-            throw new NotImplementedException();
+            _context.PagamentoDeDividas.Remove(pagamentoDeDividas);
+            await _context.SaveChangesAsync();
+            return pagamentoDeDividas;
         }
 
         public async Task<bool> FoiPago(int idDivida, DateTime date)
@@ -38,9 +40,13 @@ namespace InfraData.Repositories
             return entity;
         }
 
-        public Task<PagamentoDeDividas> GetByIdAsync(int id)
+        public async Task<PagamentoDeDividas> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _context.PagamentoDeDividas.FindAsync(id);
+            if (entity == null)
+                return null;
+
+            return entity;
         }
     }
 }
