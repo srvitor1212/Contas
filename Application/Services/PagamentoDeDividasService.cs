@@ -66,5 +66,19 @@ namespace Application.Services
             var entity = await _pagamentoDeDividasRepository.GetByIdAsync(id);
             return _mapper.Map<PagamentoDeDividasDTO>(entity);
         }
+
+        /* 
+        *      Métodos personalizados
+        */
+
+        public async 
+            Task<IEnumerable<PagamentoDeDividasDTO>> 
+            GetPagamentosByDivida(int idDivida)
+        {
+            var pagamentosEntity = await _pagamentoDeDividasRepository.GetPagamentosByDivida(idDivida);
+            var retDTO = _mapper.Map<IEnumerable<PagamentoDeDividasDTO>>(pagamentosEntity);
+
+            return retDTO;
+        }
     }
 }

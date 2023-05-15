@@ -9,6 +9,8 @@ namespace Application.Interfaces
         Task<PagamentoDeDividasDTO> CreateAsync(PagamentoDeDividasDTO pagamentoDeDividas);
         Task DeleteAsync(int id);
 
-        //Task<bool> FoiPago(int idDivida, DateTime date);
+        //      Métodos personalizados
+        Task<IEnumerable<PagamentoDeDividasDTO>> GetPagamentosByDivida(int idDivida);
+
     }
 }

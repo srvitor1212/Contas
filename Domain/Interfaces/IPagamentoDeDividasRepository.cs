@@ -9,6 +9,7 @@ namespace Domain.Interfaces
         Task<PagamentoDeDividas> CreateAsync(PagamentoDeDividas pagamentoDeDividas);
         Task<PagamentoDeDividas> DeleteAsync(PagamentoDeDividas pagamentoDeDividas);
 
-        //Task<bool> FoiPago(int idDivida, DateTime date);
+        //      Métodos personalizados
+        Task<IEnumerable<PagamentoDeDividas>> GetPagamentosByDivida(int idDivida);
     }
 }

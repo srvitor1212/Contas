@@ -63,5 +63,23 @@ namespace WebAPI.Controllers
             await _pagamentoDeDividasService.DeleteAsync(id);
             return Ok();
         }
+
+        /* 
+         *      Métodos personalizados
+         */
+
+        [HttpGet]
+        [Route("dividas")]
+        public async 
+            Task<ActionResult<IEnumerable<PagamentoDeDividasDTO>>> 
+            GetPagamentosEfetuados(int idDivida)
+        {
+            var divida = await _dividasService.GetById(idDivida);
+            if (divida == null) 
+                return NotFound();
+
+            var pagamentos = await _pagamentoDeDividasService.GetPagamentosByDivida(idDivida);
+            return Ok(pagamentos);
+        }
     }
 }

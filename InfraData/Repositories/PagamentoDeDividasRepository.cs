@@ -48,5 +48,15 @@ namespace InfraData.Repositories
 
             return entity;
         }
+
+        public async Task<IEnumerable<PagamentoDeDividas>> GetPagamentosByDivida(int idDivida)
+        {
+            var pagamentos = 
+                _context.PagamentoDeDividas
+                .Where(x => x.DividasId == idDivida)
+                .ToList();
+
+            return pagamentos;
+        }
     }
 }
