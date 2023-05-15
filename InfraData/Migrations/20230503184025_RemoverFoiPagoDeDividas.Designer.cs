@@ -4,6 +4,7 @@ using InfraData.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfraData.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230503184025_RemoverFoiPagoDeDividas")]
+    partial class RemoverFoiPagoDeDividas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,33 +103,6 @@ namespace InfraData.Migrations
                     b.ToTable("Entradas");
                 });
 
-            modelBuilder.Entity("Domain.Entities.PagamentoDeDividas", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DataAtualizacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataEfetivacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DividasId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DividasId");
-
-                    b.ToTable("PagamentoDeDividas");
-                });
-
             modelBuilder.Entity("Domain.Entities.Pagamentos", b =>
                 {
                     b.Property<int>("Id")
@@ -192,22 +168,6 @@ namespace InfraData.Migrations
                     b.Navigation("Pagamentos");
 
                     b.Navigation("Recebedores");
-                });
-
-            modelBuilder.Entity("Domain.Entities.PagamentoDeDividas", b =>
-                {
-                    b.HasOne("Domain.Entities.Dividas", "Dividas")
-                        .WithMany("PagamentoDeDividas")
-                        .HasForeignKey("DividasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Dividas");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Dividas", b =>
-                {
-                    b.Navigation("PagamentoDeDividas");
                 });
 
             modelBuilder.Entity("Domain.Entities.Pagamentos", b =>

@@ -48,7 +48,6 @@ namespace Application.Services
                 dividaEntity.Update(
                     dividasDTO.Nome,
                     dividasDTO.Valor,
-                    dividasDTO.FoiPago,
                     dividasDTO.DataInicio,
                     dividasDTO.DataFim, 
                     dividasDTO.DiaVencimento,

@@ -25,11 +25,13 @@ namespace InfraIOC
             services.AddScoped<IEntradasRepository, EntradasRepository>();
             services.AddScoped<IPagamentosRepository, PagamentosRepository>();
             services.AddScoped<IRecebedoresRepository, RecebedoresRepository>();
+            services.AddScoped<IPagamentoDeDividasRepository, PagamentoDeDividasRepository>();
 
             services.AddScoped<IDividasService, DividasService>();
             services.AddScoped<IEntradasService, EntradasService>();
             services.AddScoped<IPagamentosServices, PagamentosService>();
             services.AddScoped<IRecebedoresService, RecebedoresService>();
+            services.AddScoped<IPagamentoDeDividasService, PagamentoDeDividasService>();
             services.AddAutoMapper(typeof(DomainToDTO));
 
             return services;

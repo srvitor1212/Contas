@@ -43,7 +43,6 @@ namespace WebAPI.Controllers
         public async Task<ActionResult> Post([FromBody] DividasViewModel dividasViewModel)
         {
             ModelNormalized(dividasViewModel);
-            dividasViewModel.FoiPago = false;
 
             if (dividasViewModel.DataInicio > dividasViewModel.DataFim)
                 return BadRequest("Data inicio maior que data fim");
@@ -65,7 +64,6 @@ namespace WebAPI.Controllers
             DividasDTO dividaDTO = new DividasDTO(
                 dividasViewModel.Nome,
                 dividasViewModel.Valor,
-                dividasViewModel.FoiPago,
                 dividasViewModel.DataInicio,
                 dividasViewModel.DataFim,
                 dividasViewModel.DiaVencimento,
@@ -97,7 +95,6 @@ namespace WebAPI.Controllers
                 id,
                 dividasViewModel.Nome,
                 dividasViewModel.Valor,
-                dividasViewModel.FoiPago,
                 dividasViewModel.DataInicio,
                 dividasViewModel.DataFim,
                 dividasViewModel.DiaVencimento,

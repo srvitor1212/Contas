@@ -12,6 +12,7 @@ namespace Application.Mapper
             CreateMap<Entradas, EntradasDTO>().ReverseMap();
             CreateMap<Pagamentos, PagamentosDTO>().ReverseMap();
             CreateMap<Recebedores, RecebedoresDTO>().ReverseMap();
+            CreateMap<PagamentoDeDividas, PagamentoDeDividasDTO>().ReverseMap();
         }
     }
 }

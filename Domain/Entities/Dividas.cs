@@ -6,7 +6,6 @@ namespace Domain.Entities
     {
         public string Nome { get; private set; }
         public decimal Valor { get; private set; }
-        public bool FoiPago { get; private set; } = false;
         public DateTime DataInicio { get; private set; }
         public DateTime DataFim { get; private set; }
         public byte DiaVencimento { get; private set; }
@@ -17,38 +16,33 @@ namespace Domain.Entities
         public int RecebedoresId { get; set; }
         public Recebedores Recebedores { get; set; }
 
-        public Dividas(string nome, decimal valor, bool FoiPago,
-            DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
+        public ICollection<PagamentoDeDividas> PagamentoDeDividas { get; set; }
+
+        public Dividas(string nome, decimal valor, DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
         {
-            Validation(nome, valor, FoiPago,
-                DataInicio, DataFim, DiaVencimento);
+            Validation(nome, valor, DataInicio, DataFim, DiaVencimento);
         }
 
-        public Dividas(int id, string nome, decimal valor, bool FoiPago,
-            DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
+        public Dividas(int id, string nome, decimal valor, DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
         {
             DomainValidation.When(
                 id < 0,
                 "Id inválido!");
             this.Id = id;
 
-            Validation(nome, valor, FoiPago,
-                DataInicio, DataFim, DiaVencimento);
+            Validation(nome, valor, DataInicio, DataFim, DiaVencimento);
         }
 
-        public void Update(string nome, decimal valor, bool FoiPago,
-            DateTime DataInicio, DateTime DataFim, byte DiaVencimento,
+        public void Update(string nome, decimal valor, DateTime DataInicio, DateTime DataFim, byte DiaVencimento,
             int pagamentosId, int recebedoresId)
         {
-            Validation(nome, valor, FoiPago,
-                DataInicio, DataFim, DiaVencimento);
+            Validation(nome, valor, DataInicio, DataFim, DiaVencimento);
             
             this.PagamentosId = pagamentosId;
             this.RecebedoresId = recebedoresId;
         }
 
-        public void Validation(string nome, decimal valor, bool FoiPago,
-            DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
+        public void Validation(string nome, decimal valor, DateTime DataInicio, DateTime DataFim, byte DiaVencimento)
         {
             //nome
             DomainValidation.When(
@@ -74,7 +68,6 @@ namespace Domain.Entities
 
             this.Nome = nome;
             this.Valor = valor;
-            this.FoiPago = FoiPago;
             this.DataInicio = DataInicio;
             this.DataFim = DataFim;
             this.DiaVencimento = DiaVencimento;
