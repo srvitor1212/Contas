@@ -1,6 +1,7 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.ViewModel;
 
 namespace WebAPI.Controllers
 {
@@ -35,9 +36,12 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] PagamentoDeDividasDTO pagamentoDeDividasDTO)
+        public async Task<ActionResult> Post([FromBody] PagamentoDeDividasViewModel pagamentoDeDividasViewModel)
         {
-            //todo: criar uma view model para não mostra ID, e na DTO mostrar o ID
+            PagamentoDeDividasDTO pagamentoDeDividasDTO = new PagamentoDeDividasDTO();
+            pagamentoDeDividasDTO.DataEfetivacao = pagamentoDeDividasViewModel.DataEfetivacao;
+            pagamentoDeDividasDTO.DividasId = pagamentoDeDividasViewModel.DividasId;
+
             var divida = await _dividasService.GetById(pagamentoDeDividasDTO.DividasId);
             if (divida == null)
                 return NotFound();
