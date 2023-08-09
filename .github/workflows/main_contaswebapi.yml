@@ -25,23 +25,12 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release        
       
-      - name: show current dir
-        run: dir
-        
-      - name: change dir  
-        run: cd WebAPI
-        
-      - name: show current dir
-        run: dir  
-        
-      - name: database update  
-        run: dotnet ef database update
-        
-      - name: return dir
-        run: cd ..
-        
-      - name: show current dir
-        run: dir        
+      - name: update database
+        run: |
+            dir
+            cd WebAPI
+            dir
+            dotnet ef database update
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
