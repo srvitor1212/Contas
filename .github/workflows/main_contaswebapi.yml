@@ -23,14 +23,13 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release        
+      
+      - name: dotnet database update
+        run: dir
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-        
-      - name: dotnet update data base
-        run: dotnet ef database update
-
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
