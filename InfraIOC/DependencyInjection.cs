@@ -17,7 +17,7 @@ namespace InfraIOC
             IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(
-                options => options.UseSqlServer(
+                options => options.UseSqlite(
                     configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
 

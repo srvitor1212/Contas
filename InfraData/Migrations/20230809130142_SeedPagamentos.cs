@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Globalization;
-using System.Security.Cryptography;
 
 #nullable disable
 
@@ -15,31 +12,31 @@ namespace InfraData.Migrations
         {
             DateTime agora = DateTime.Now;
             string mes, dia, hora, minuto, segundo;
-            mes =       NormalizeDateTime(agora.Month);
-            dia =       NormalizeDateTime(agora.Day);
-            hora =      NormalizeDateTime(agora.Hour);
-            minuto =    NormalizeDateTime(agora.Minute);
-            segundo =   NormalizeDateTime(agora.Second);
+            mes = NormalizeDateTime(agora.Month);
+            dia = NormalizeDateTime(agora.Day);
+            hora = NormalizeDateTime(agora.Hour);
+            minuto = NormalizeDateTime(agora.Minute);
+            segundo = NormalizeDateTime(agora.Second);
 
             string strAgora = (
-                agora.Year  + "-" + 
-                mes         + "-" + 
-                dia         + "T" +
-                hora        + ":" + 
-                minuto      + ":" + 
-                segundo     ).ToString();
+                agora.Year + "-" +
+                mes + "-" +
+                dia + "T" +
+                hora + ":" +
+                minuto + ":" +
+                segundo).ToString();
 
-            // Para permitir setar manualmente a coluna de identificação (PK ou IDENTITY_INSERT)
-            migrationBuilder.Sql(
-                "SET IDENTITY_INSERT Pagamentos ON");
+            //// Para permitir setar manualmente a coluna de identificação (PK ou IDENTITY_INSERT)
+            //migrationBuilder.Sql(
+            //    "SET IDENTITY_INSERT Pagamentos ON");
 
             migrationBuilder.Sql(
                 "INSERT INTO Pagamentos(Id, DataCriacao, DataAtualizacao, Nome)" +
                 "VALUES (1, '" + strAgora + "', '" + strAgora + "', 'Dinheiro')");
 
-            // Voltar para OFF por padrão
-            migrationBuilder.Sql(
-                "SET IDENTITY_INSERT Pagamentos OFF");
+            //// Voltar para OFF por padrão
+            //migrationBuilder.Sql(
+            //    "SET IDENTITY_INSERT Pagamentos OFF");
         }
 
         /// <inheritdoc />

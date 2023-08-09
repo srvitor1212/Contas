@@ -26,17 +26,17 @@ namespace InfraData.Migrations
                 minuto + ":" +
                 segundo).ToString();
 
-            // Para permitir setar manualmente a coluna de identificação (PK ou IDENTITY_INSERT)
-            migrationBuilder.Sql(
-                "SET IDENTITY_INSERT Recebedores ON");
+            //// Para permitir setar manualmente a coluna de identificação (PK ou IDENTITY_INSERT)
+            //migrationBuilder.Sql(
+            //    "SET IDENTITY_INSERT Recebedores ON");
 
             migrationBuilder.Sql(
                 "INSERT INTO Recebedores(Id, DataCriacao, DataAtualizacao, Nome)" +
                 "VALUES (1, '" + strAgora + "', '" + strAgora + "', 'Não informado')");
 
-            // Voltar para OFF por padrão
-            migrationBuilder.Sql(
-                "SET IDENTITY_INSERT Recebedores OFF");
+            //// Voltar para OFF por padrão
+            //migrationBuilder.Sql(
+            //    "SET IDENTITY_INSERT Recebedores OFF");
 
         }
 
