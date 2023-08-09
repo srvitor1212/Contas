@@ -81,3 +81,5 @@ _[Ss]cripts
 *.db
 *-shm
 *-wal
+*.pubxml
+/WebAPI/.config/dotnet-tools.json
