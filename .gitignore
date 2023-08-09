@@ -77,4 +77,7 @@ _[Ss]cripts
 # Others
 *.vs
 
+# sqlite files
 *.db
+*-shm
+*-wal
