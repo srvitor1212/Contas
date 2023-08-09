@@ -31,6 +31,9 @@ jobs:
       - name: change dir  
         run: cd WebAPI
         
+      - name: show current dir
+        run: dir  
+        
       - name: database update  
         run: dotnet ef database update
         
