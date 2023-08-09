@@ -27,10 +27,10 @@ jobs:
       
       - name: update database
         run: |
-            dir
-            cd WebAPI
-            dir
-            dotnet ef database update
+             dotnet tool install --global dotnet-ef
+             dotnet tool restore
+             cd WebAPI
+             dotnet ef database update
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
