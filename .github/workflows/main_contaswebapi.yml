@@ -23,14 +23,7 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release        
-      
-      - name: update database
-        run: |
-             dotnet tool install --global dotnet-ef
-             dotnet tool restore
-             cd WebAPI
-             dotnet ef database update
+        run: dotnet build --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
