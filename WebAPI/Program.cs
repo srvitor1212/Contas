@@ -1,4 +1,6 @@
+using InfraData.Context;
 using InfraIOC;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,11 @@ builder.Services.AddMvc(
 
 var app = builder.Build();
 
+
+// Executar migrations
+using (var scope = app.Services.CreateScope())
+using (var context = scope.ServiceProvider.GetService<AppDbContext>())
+context.Database.Migrate();
 
 //// Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
