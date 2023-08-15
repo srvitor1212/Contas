@@ -15,7 +15,25 @@ builder.Services.AddMvc(
     options => options.Filters.Add(typeof(FiltrarExceptions)));
 
 
+//  CORS liberado
+//todo: liberar CORS somente para origem desejada
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AnyOrigin", builder =>
+    {
+        builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod();
+    });
+});
+
+
 var app = builder.Build();
+
+
+// Configure
+//todo: liberar CORS somente para origem desejada
+app.UseCors("AnyOrigin");
 
 
 // Executar migrations
